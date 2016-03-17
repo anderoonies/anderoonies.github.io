@@ -1,0 +1,25 @@
+---
+layout: page
+title: Projects
+menu: main
+permalink: /projects/
+---
+
+<script src="/js/main.js" type="text/javascript"></script>
+
+<div class="container">
+  {% for project in site.projects %}
+    {% assign loopindex = forloop.index | modulo: 2 %}
+    {% if loopindex == 1 %}
+      <div class="row">
+        <div class="one-half column" style="background-image:url('{{project.photo_url}}')">
+          <a href="{{ project.url }}">{{ project.title }}</a>
+        </div>
+    {% else %}
+      <div class="one-half column">
+        <a href="{{ project.url }}">{{ project.title }}</a>
+      </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
