@@ -2,6 +2,7 @@
 title: AndyBot
 layout: page
 photo_url: /projects/andybot.png
+excerpt: A well-intentioned Twitter bot
 ---
 
 
