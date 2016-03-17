@@ -1,19 +1,73 @@
 .container {
   max-width: 800px; }
+
+.padded-content {
+  padding: 20px 20px;
+  display: block;
+  height: 100%;
+}
+
+/* Header */
 .header {
   margin-top: 6rem;
   text-align: center; }
 .navbar {
   display: none; }
+
+/* Footer */
 .footer {
   border-top: 1px solid #eee;
+  padding-top: 20px;
 }
 .social-list {
   list-style: none;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
 }
 .social-list li {
-  display: inline-block;
-  padding-right: 20px;
+  height: 100%;
+  display: inline;
+  padding-right: 30px;
+}
+
+/* Project Page */
+div.project {
+  position: relative;
+  height: 250px;
+}
+
+div.project a {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-decoration: none;
+}
+
+div.project a:hover {
+  background-color: #1EAEDB;
+  opacity: 0.4;
+}
+
+div.project img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.2;
+}
+
+div.title {
+  color: black;
+  text-decoration: none;
+  font-size: 2em;
+}
+
+div.excerpt {
+  color: black;
 }
 
 /* Larger than phone */

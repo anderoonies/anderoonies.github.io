@@ -11,15 +11,37 @@ permalink: /projects/
   {% for project in site.projects %}
     {% assign loopindex = forloop.index | modulo: 2 %}
     {% if loopindex == 1 %}
-      <div class="row">
-        <div class="one-half column" style="background-image:url('{{project.photo_url}}')">
-          <a href="{{ project.url }}">{{ project.title }}</a>
+    <div class="row">
+      <div class="one-half column project">
+        <a href="{{project.url}}"></a>
+        <div class="padded-content">
+          <div class="title">
+            {{project.title}}
+          </div>
+          {% if project.excerpt %}
+          <div class="excerpt">
+            {{ project.excerpt }}
+          </div>
+          {% endif %}
+          <img src="{{ project.photo_url }}">
         </div>
+      </div>
     {% else %}
-      <div class="one-half column">
-        <a href="{{ project.url }}">{{ project.title }}</a>
+      <div class="one-half column project">
+        <a href="{{project.url}}"></a>
+        <div class="padded-content">
+          <div class="title">
+            {{project.title}}
+          </div>
+          {% if project.excerpt %}
+          <div class="excerpt">
+            {{ project.excerpt }}
+          </div>
+          {% endif %}
+          <img src="{{ project.photo_url }}">
+        </div>
       </div>
-      </div>
+    </div>
     {% endif %}
   {% endfor %}
 </div>
