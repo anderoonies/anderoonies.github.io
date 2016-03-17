@@ -15,3 +15,8 @@ github_username:  anderoonies
 timezone: America/Chicago
 # Build settings
 markdown: kramdown
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:path/
