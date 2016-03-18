@@ -1,8 +1,14 @@
+.wrapper {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
 .container {
-  max-width: 800px; }
+  max-width: 800px;
+}
 
 .padded-content {
-  padding: 20px 20px;
+  padding: 20px;
   display: block;
   height: 100%;
 }
@@ -32,12 +38,13 @@
 }
 
 /* Project Page */
-div.project {
+div.entry {
   position: relative;
   height: 250px;
+  overflow: hidden;
 }
 
-div.project a {
+div.entry a {
   height: 100%;
   width: 100%;
   position: absolute;
@@ -46,12 +53,12 @@ div.project a {
   text-decoration: none;
 }
 
-div.project a:hover {
+div.entry a:hover {
   background-color: #1EAEDB;
   opacity: 0.4;
 }
 
-div.project img {
+div.entry img {
   position: absolute;
   top: 0;
   left: 0;
@@ -68,6 +75,7 @@ div.title {
 
 div.excerpt {
   color: black;
+  height: 100%;
 }
 
 /* Larger than phone */

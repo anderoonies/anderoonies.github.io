@@ -12,7 +12,7 @@ permalink: /projects/
     {% assign loopindex = forloop.index | modulo: 2 %}
     {% if loopindex == 1 %}
     <div class="row">
-      <div class="one-half column project">
+      <div class="one-half column entry">
         <a href="{{project.url}}"></a>
         <div class="padded-content">
           <div class="title">
@@ -27,7 +27,7 @@ permalink: /projects/
         </div>
       </div>
     {% else %}
-      <div class="one-half column project">
+      <div class="one-half column entry">
         <a href="{{project.url}}"></a>
         <div class="padded-content">
           <div class="title">

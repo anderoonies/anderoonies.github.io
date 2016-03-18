@@ -2,26 +2,49 @@
 layout: default
 ---
 
-<div class="home">
+<script src="/js/main.js" type="text/javascript"></script>
 
-  <h1 class="page-heading">Posts</h1>
-
-  <div class="container">
-    {% for post in site.posts %}
-      {% assign loopindex = forloop.index | modulo: 2 %}
-      {% if loopindex == 1 %}
-        <div class="row">
-          <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-          <div class="one-half column">
-            <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+<div class="container">
+  {% for post in site.posts %}
+    {% assign loopindex = forloop.index | modulo: 2 %}
+    {% if loopindex == 1 %}
+    <div class="row">
+      <div class="one-half column entry">
+        <a href="{{post.url}}"></a>
+        <div class="padded-content">
+          <div class="title">
+            {{post.title}}
           </div>
-      {% else %}
-          <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-          <div class="one-half column">
-            <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+          <div class="date">
+            {{ post.date | date: '%B %d, %Y' }}
           </div>
+          {% if post.excerpt %}
+          <div class="excerpt">
+            {{ post.excerpt }}
+          </div>
+          {% endif %}
+          <img src="{{ post.photo_url }}">
         </div>
-      {% endif %}
-    {% endfor %}
-  </div>
+      </div>
+    {% else %}
+      <div class="one-half column entry">
+        <a href="{{post.url}}"></a>
+        <div class="padded-content">
+          <div class="title">
+            {{post.title}}
+          </div>
+          <div class="date">
+            {{ post.date | date: '%B %d, %Y' }}
+          </div>
+          {% if post.excerpt %}
+          <div class="excerpt">
+            {{ post.excerpt }}
+          </div>
+          {% endif %}
+          <img src="{{ post.photo_url }}">
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  {% endfor %}
 </div>

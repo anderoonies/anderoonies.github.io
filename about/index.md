@@ -5,6 +5,8 @@ menu: main
 permalink: /about/
 ---
 
+# About
+
 Hi! I'm Andy Bayer, a programmer, musician, writer, and comedian studying at Northwestern University.
 
 ### Contact

@@ -13,6 +13,7 @@ url: "http://yourdomain.com" # the base hostname & protocol for your site
 twitter_username: aybe
 github_username:  anderoonies
 timezone: America/Chicago
+excerpt_separator: ""
 # Build settings
 markdown: kramdown
 
