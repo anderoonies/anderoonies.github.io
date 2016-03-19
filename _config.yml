@@ -14,8 +14,9 @@ twitter_username: aybe
 github_username:  anderoonies
 timezone: America/Chicago
 excerpt_separator: ""
-# Build settings
-markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 
 collections:
   projects:

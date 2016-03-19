@@ -24,6 +24,10 @@ code {
   max-width: 800px;
 }
 
+.spacer {
+
+}
+
 .padded-content {
   padding: 20px;
   display: block;
@@ -79,7 +83,7 @@ div.entry img {
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
+  vertical-align: center;
   pointer-events: none;
   opacity: 0.2;
 }
@@ -97,6 +101,32 @@ div.excerpt {
 
 div.date {
   color: grey;
+}
+
+div.image-feature {
+  float: left;
+  position: relative;
+  clear: both;
+  box-sizing: border-box;
+  margin-right: 30px;
+  margin-bottom: 20px;
+  max-width: 525px;
+  max-height: 300px;
+  margin-left: -200px;
+}
+
+div.image-feature img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+div.caption {
+  margin-top: 10px;
+  font-size: 1em;
+  text-align: center;
+  font-style: italic;
+  color: gray;
 }
 
 /* Larger than phone */
