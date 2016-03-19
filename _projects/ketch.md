@@ -7,11 +7,6 @@ excerpt: Learning from a failed app.
 
 # Ketch
 
-<div class="image-feature">
-  <img src="http://i.imgur.com/ENQZUcV.gif">
-  <div class="caption"> "User flow" </div>
-</div>
-
 Ketch was an app I made with some Northwestern graduate students as a part of Northwestern's [NUvention](http://www.farley.northwestern.edu/we-teach/nuvention/) program.
 
 It was built across the 6 months, from an idea to prototypes to a complete iOS app. Through the NUvention program, Ketch was dissected weekly by a group of course advisers and presented twice to a board of investors.
@@ -24,6 +19,11 @@ Ketch's goal was to connect you to friends nearby. That was it. The idea was tha
 
 (I've rehearsed that so many times that I didn't even need to think when writing it.)
 
+<div class="image-feature">
+  <img src="http://i.imgur.com/ENQZUcV.gif" class="drop-shadow">
+  <div class="caption"> "User flow" </div>
+</div>
+
 The premise of the app, of course, needs for a lot of people to be using the app and opening the app often. We had thought this could work.
 
 ## Making It (And Not Making it)
@@ -35,8 +35,8 @@ First, making it.
 ### Prototyping
 
 <div class="image-feature">
-  <img src="/projects/ketch/proto1.png" align="center">
-  <img src="/projects/ketch/proto2.png" align="center">
+  <img src="/projects/ketch/proto1.png">
+  <img src="/projects/ketch/proto2.png">
 </div>
 
 How could it be a failed app without paper prototying?
@@ -65,7 +65,7 @@ for (FriendAnnotation *annotation in _mapMarkers) {
 ### Groups
 
 <div class="image-feature">
-  <img src="/projects/ketch/ketch-groups.gif">
+  <img src="/projects/ketch/ketch-groups.gif" class="drop-shadow">
   <div class="caption"> Using groups </div>
 </div>
 
@@ -145,6 +145,4 @@ I got a lot out of Ketch. I've learned what a small start-up is like, I've learn
 
 I got a good profile picture from the final pitch.
 
-<div class="image-feature">
-  <img src="/about/me.png" align="center" width="100%">
-</div>
+<img src="/about/me.png" align="center" width="100%">
