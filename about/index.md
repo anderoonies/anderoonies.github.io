@@ -7,9 +7,6 @@ permalink: /about/
 
 # About
 
-Hi! I'm Andy Bayer, a programmer, musician, writer, and comedian studying at Northwestern University.
+<img src="/about/me.png" width="100%" align="center">
 
-### Contact
-+ [Github](https://github.com/anderoonies)
-+ [Instagram](https://instagram.com/andyrbayer)
-+ [Twitter](https://twitter.com/aybe)
+I'm Andy Bayer, a programmer, musician and writer studying at Northwestern University.
