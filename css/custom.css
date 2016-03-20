@@ -104,18 +104,18 @@ div.date {
 }
 
 div.image-feature {
-  position: relative;
+  text-align: center;
   clear: both;
   box-sizing: border-box;
   margin-left: auto;
   margin-right: auto;
-  text-align: center;
-  margin-right: 30px;
   margin-top: 30px;
   margin-bottom: 30px;
 }
 
 div.image-feature img {
+  display: inline;
+  max-width: 100%;
 }
 
 .drop-shadow {
@@ -126,10 +126,15 @@ div.image-feature img {
 
 div.caption {
   margin-top: 10px;
+  margin-bottom: 20px;
   font-size: 1em;
   text-align: center;
   font-style: italic;
   color: gray;
+}
+
+div.center {
+  margin: 0 auto;
 }
 
 /* Larger than phone */

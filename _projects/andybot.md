@@ -1,12 +1,12 @@
 ---
 title: AndyBot
 layout: page
-photo_url: /projects/andybot.png
+photo_url: /projects/andybot/andybot.png
 excerpt: A well-intentioned Twitter bot
 ---
 
 
-<img src="/projects/andybot.png" width="35%" align="right">
+<img src="/projects/andybot/andybot.png" width="35%" align="right">
 
 # AndyBot
 
