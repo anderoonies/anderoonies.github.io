@@ -62,10 +62,24 @@ for (FriendAnnotation *annotation in _mapMarkers) {
 }
 {% endhighlight %}
 
+### UI
+
+In my inital versions of the app it's a complete mystery what buttons do what. Nothing is clear at all and there's no feedback to users. Even when running these old versions in the simulator now I'm not sure what I'm supposed to be doing.
+
+Here's an example that shows how an older version and a newer version react to not having any friends for an event.
+
+<div class="image-feature">
+  <img src="/projects/ketch/old-ketch.gif" class="drop-shadow">
+  <img src="/projects/ketch/new-ketch.gif" class="drop-shadow">
+</div>
+
+The first gives no indicator 1. what the radio buttons with "60, 120", etc. do 2. that an event can't be created without friends.
+The second grays out the event creation button and makes the selector for minutes more obvious.
+
 ### Groups
 
 <div class="image-feature">
-  <img src="/projects/ketch/ketch-groups.gif" class="drop-shadow">
+  <img src="/projects/ketch/groups.gif" class="drop-shadow">
   <div class="caption"> Using groups </div>
 </div>
 
