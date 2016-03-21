@@ -55,7 +55,6 @@ code {
 .social-list li {
   height: 100%;
   display: inline;
-  padding-right: 30px;
 }
 
 /* Project Page */
@@ -144,8 +143,7 @@ div.center {
 }
 
 /* Larger than tablet */
-@media (min-width: 750px) {
-  /* Navbar */
+@media (min-width: 400px) {
   .navbar + .docs-section {
     border-top-width: 0; }
   .navbar,
@@ -168,13 +166,13 @@ div.center {
   .navbar-item {
     position: relative;
     float: left;
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    margin-left: 35px;}
   .navbar-link {
     text-transform: uppercase;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: .2rem;
-    margin-right: 35px;
     text-decoration: none;
     line-height: 6.5rem;
     color: #222; }

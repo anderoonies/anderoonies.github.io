@@ -16,7 +16,7 @@ timezone: America/Chicago
 excerpt_separator: ""
 kramdown:
   input: GFM
-  syntax_highlighter: rouge
+highlighter: rouge
 
 collections:
   projects:

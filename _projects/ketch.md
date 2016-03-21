@@ -49,7 +49,7 @@ I first implemented the map using native Apple Maps. But, on the chance that a u
 
 I just plunked down the GMS `mapView_` on top of the view controller, then adding annotations was straightforward.
 
-{% highlight objective-c %}
+{% highlight objc %}
 for (FriendAnnotation *annotation in _mapMarkers) {
     CustomGMSMarker *marker = [CustomGMSMarker markerWithPosition:annotation.coordinate];
     marker.appearAnimation = kGMSMarkerAnimationPop;
@@ -79,7 +79,7 @@ This was solved by creating groups within the app. I implemented a many-to-many 
 
 I can look through the code and see the progression of me actually learning Objective-C. Here's an example:
 
-{% highlight objective-c %}
+{% highlight objc %}
 - (void)viewWillDisappear:(BOOL)animated {
     [self.navigationController setToolbarHidden:YES];
     if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
@@ -102,7 +102,7 @@ I'm trying to find the main view controller, `MapViewController`, by counting th
 
 Here's an example from months later:
 
-{% highlight c %}
+{% highlight objc %}
 // in Blurb class
 - (IBAction)donePressed:(id)sender
 {
