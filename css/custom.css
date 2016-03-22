@@ -143,7 +143,7 @@ div.center {
 }
 
 /* Larger than tablet */
-@media (min-width: 400px) {
+@media (min-width: 320px) {
   .navbar + .docs-section {
     border-top-width: 0; }
   .navbar,
