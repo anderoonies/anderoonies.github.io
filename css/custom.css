@@ -21,7 +21,8 @@ code {
 }
 
 .padded-content {
-  padding: 20px;
+  padding-top: 10px;
+  padding-left: 10px;
   display: block;
   height: 100%;
 }
