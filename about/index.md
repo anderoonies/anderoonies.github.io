@@ -10,3 +10,5 @@ permalink: /about/
 <img src="/about/me.png" width="100%" align="center">
 
 I'm Andy Bayer, a programmer, musician and writer studying at Northwestern University.
+
+[Email](mailto:andrewbayer2016@u.northwestern.edu) me!

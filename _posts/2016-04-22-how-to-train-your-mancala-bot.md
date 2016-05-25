@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  How To Train Your Mancala Bot
-excerpt: Using genetic algorithms to beat me in a game
+excerpt: Using genetic algorithms to beat me in a game.
 ---
 
 I spent the past week goofing around with genetic algorithms to develop a heuristic for evaluating a mancala board for more successful move selection.
@@ -17,12 +17,13 @@ The bot uses a minimax tree to select the next move, meaning it chooses the move
 AB pruning assumes the following: if I'm playing a game of tic tac toe and there's a move I can make that will make it possible for me to win, I will ignore all other moves so the bot making a decision can, too.
 Here's that example more visually (I'm `X`, the bot is `O`).
 
-
+<div class="image-feature">
+  <img src="/projects/mancala/board-state.png">
+</div>
 
 Assuming it's my turn, the best I can do here is tie. There's clearly a move that the bot can make next turn (bottom right) that would win the game for it—but why would I leave that space open?
 
 The bot assumes I'm never going to choose a move that produces a desirable outcome for it, so when it's considering previous game states it ignores any configuration where I let this happen:
-
 
 <div class="image-feature">
   <img src="/projects/mancala/bad-moves.png">
