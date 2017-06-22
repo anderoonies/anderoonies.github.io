@@ -84,11 +84,6 @@ The third level has all of these mechanics but at much higher stakes.
 
 Most of us agreed that the input method was successful and created a fun experience. The simplicity of the game creates a huge space for level design that we didn't have the time to explore.
 
-<div class="image-feature">
-  <img src="/projects/rhythmrush/leveldesign.jpg">
-  <div class="caption"> A level mockup </div>
-</div>
-
 ## Bad Things?
 
 From testing the game in the class, some people picked it up right away but other struggled. Ideally we would have tested with more users to find out if this was a problem with our input thresholds, the UI, or something else we did, or if some people are just worse at rhythm games.
