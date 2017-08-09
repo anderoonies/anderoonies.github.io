@@ -11,8 +11,8 @@ I'm Andy Bayer, a programmer, musician and writer studying at Northwestern Unive
 
 ## Experience
 
-#### [__CodeHS__](https://codehs.com/) | _Software Engineering Intern_
-I spent two summers at CodeHS working as a full-stack software engineering intern.
+#### [__CodeHS__](https://codehs.com/) | _Software Engineer_
+I worked at CodeHS for two summers as an engineer intern before moving up to full-time.
 Some of the major things I completed were modularizing the site's graphics library, designing and creating autograders for Javascript and Python, and improving developer tools.
 
 #### [__Ketch__]({{site.url}}/projects/ketch) | _Developer_
