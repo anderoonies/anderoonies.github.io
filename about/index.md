@@ -7,7 +7,7 @@ permalink: /about/
 
 # About
 
-I'm Andy Bayer, a programmer, musician and writer studying at Northwestern University.
+I'm Andy Bayer, a programmer, musician and writer. I studied at Northwestern University.
 
 ## Experience
 
