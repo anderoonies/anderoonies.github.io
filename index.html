@@ -25,7 +25,9 @@ layout: default
             {{ post.excerpt }}
           </div>
           {% endif %}
-          <img src="{{ post.photo_url }}">
+          {% if post.photo_url %}
+              <img src="{{ post.photo_url }}">
+          {% endif %}
         </div>
       </div>
     {% else %}
@@ -43,7 +45,9 @@ layout: default
             {{ post.excerpt }}
           </div>
           {% endif %}
-          <img src="{{ post.photo_url }}">
+          {% if post.photo_url %}
+              <img src="{{ post.photo_url }}">
+          {% endif %}
         </div>
       </div>
     </div>
