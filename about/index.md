@@ -7,21 +7,24 @@ permalink: /about/
 
 # About
 
-I'm Andy Bayer, a programmer, musician and writer. I studied at Northwestern University.
+I studied music performance and computer science at Northwestern University with a focus on systems, programming languages, and security. I do [distance running](https://www.strava.com/athletes/23057637) and play Magic: The Gathering.
 
 ## Experience
 
-#### [__CodeHS__](https://codehs.com/) | _Software Engineer_
-I worked at CodeHS for two summers as an engineer intern before moving up to full-time.
-Some of the major things I completed were modularizing the site's graphics library, designing and creating autograders for Javascript and Python, and improving developer tools.
+#### [**CodeHS**](https://codehs.com/) | _Software Engineer_
 
-#### [__Ketch__]({{site.url}}/projects/ketch) | _Developer_
-I was the lead developer and designer for an app created within Northwestern's NUvention program. I've written about my experience working on the app [on this site]({{site.url/projects/ketch}}).
+I do full-stack work at CodeHS. I redesigned our web IDE to be faster, smaller, and more portable, built a reliable, scaling infrastructure for our code servers, and led work on our Python autograders.
 
-#### [__Atom__](https://atom.io/) | _Contributor_
-I've contributed to a few Atom packages, including [`tree-view`](https://github.com/atom/tree-view/pull/793) and [`tabs`](https://github.com/atom/tabs/commits?author=anderoonies).
+#### [**Ketch**]({{site.url}}/projects/ketch) | _Developer_
+
+I was the developer and designer for an app created within Northwestern's NUvention program. I've written about my experience working on the app [on this site]({{site.url/projects/ketch}}).
+
+#### [**Atom**](https://atom.io/) | _Contributor_
+
+I've contributed to a few Atom packages, including [`tree-view`](https://github.com/atom/tree-view) and [`tabs`](https://github.com/atom/tabs).
 
 ## Skills
-I work mostly in Python and Javascript, with experience in iOS, Coffeescript, and HTML/CSS.
 
-[Email](mailto:andrewbayer2016@u.northwestern.edu) me!
+I've spent years writing Python and JavaScript, with experience in Django, React, and React-Redux. I'm familiar with FP languages like CLISP and Elm.
+
+[email](mailto:andrewbayer2016@u.northwestern.edu)
