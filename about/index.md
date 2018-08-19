@@ -25,6 +25,6 @@ I've contributed to a few Atom packages, including [`tree-view`](https://github.
 
 ## Skills
 
-I've spent years writing Python and JavaScript, with experience in Django, React, and React-Redux. I'm familiar with FP languages like CLISP and Elm.
+I've spent years writing Python and JavaScript, with experience in Django, React, and React Redux. I'm familiar with FP languages like CLISP and Elm.
 
 [email](mailto:andrewbayer2016@u.northwestern.edu)
