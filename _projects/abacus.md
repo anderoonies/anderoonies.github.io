@@ -7,15 +7,15 @@ excerpt: Lightweight, powerful web IDE
 
 # Abacus
 
-Abacus is a web IDE I made for CodeHS with the help of John Kelly. Building on years of work with our previous IDE, I set out to make something fast, small, and resistant to the pitfalls of our existing IDE.
+Abacus is a web IDE I made for CodeHS with the help of John Kelly. Building on years of work with our previous IDE, I set out to make something fast, small, and resistant to the design pitfalls we had in the past.
 
 ## Technology
 
-Abacus is built using [Redux](https://github.com/reduxjs/redux), React, and [React Redux](https://github.com/reduxjs/react-redux). Redux codifies view and state updates pretty rigidly, something I wanted for managing the mutliple, interconnected pieces of an IDE. At any time, user interaction, WebSocket connections, and code running on the site hosting Abacus can all be jockeying to update state. The reducer model, inspired by The Elm Architecture, keeps these state updates pure.
+Abacus is built using React, [Redux](https://github.com/reduxjs/redux), and [React Redux](https://github.com/reduxjs/react-redux). Redux codifies view and state updates pretty rigidly, something I wanted for managing the mutliple, interconnected pieces of an IDE. At any time, user interaction, WebSocket connections, and code running on the site hosting Abacus can all be jockeying to update state. The reducer model, inspired by The Elm Architecture, keeps these state updates pure.
 
 ## Breaking the rules of React Redux
 
-React Redux's reducer is of type `(state, action) -> state`. Given the existing state and an action from a user (or something else connected to the application), a new state is produced. This can accomplish a lot, but doesn't accommodate effects HTTP, WebSockets, or in-browser code evaluation, something our IDE needed to do. The Elm Architecture incorporates effects into its update cycle using [commands](http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Platform-Cmd), and there are a few libraries for Redux that try to handle side effects nicely ([redux-saga](https://github.com/redux-saga/redux-saga), [redux-thunk](https://github.com/reduxjs/redux-thunk)).
+React Redux's reducer is of type `(state, action) -> state`. Given an existing state and an action from a user (or something else connected to the application), a new state is produced. This can accomplish a lot, but doesn't accommodate effects HTTP, WebSockets, or in-browser code evaluation, something our IDE needed to do. The Elm Architecture incorporates effects into its update cycle using [commands](http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Platform-Cmd) and a few libraries for Redux try to handle side effects similarly ([redux-saga](https://github.com/redux-saga/redux-saga), [redux-thunk](https://github.com/reduxjs/redux-thunk)).
 
 Let's look at an example of when we need an effect manager.
 
@@ -24,9 +24,9 @@ Let's look at an example of when we need an effect manager.
   <div class="caption"> Running JavaScript </div>
 </div>
 
-To run code, the user clicks the "Run" button, which causes a `RUN_PRESSED` action to be dispatched. If we were using a reducer of type `(state, action) -> state`, we would switch to a `RUNNING` state, but then how do we effectfully run the student's code? We need a way for actions to trigger effects outside of the main reducer.
+To run code, the user clicks the "Run" button, which causes a `RUN_PRESSED` action to be dispatched. If we were using a reducer of type `(state, action) -> state`, we would switch to a `RUNNING` state, but then how would we effectfully run the student's code without making the reducer itself effectful? We need a way for actions to trigger effects outside of the main reducer.
 
-John and I (mostly John) were familiar with Elm's `Cmd` and wanted to approximate it in Redux, basically making the reducer of type `(state, action) -> (state, thunk)` where the `thunk` itself dispatches actions to cause further state updates. That ended up looking like this:
+John and I (mostly John) wanted to include Elm's `Cmd` in Redux. In The Elm Architecture, `update` is of type `Msg -> Model -> ( Model, Cmd Msg )`. We approximated it by basically making the reducer of type `(state, action) -> (state, thunk)` where the `thunk` itself dispatches actions to cause further state updates. That ended up looking like this:
 
 ```js
 const install = () => next => (reducer, initialModel, enhancer) => {
@@ -73,7 +73,7 @@ const install = () => next => (reducer, initialModel, enhancer) => {
 };
 ```
 
-The reducer is lifted with a function that handles the queueing of any thunks the reducer returns. The native `dispatch` function is modified to call any queued thunks, waiting for them first if they're Promises.
+The reducer is lifted with a function that handles the queueing of any thunks the reducer returns. The native `dispatch` function is modified to first dispatch the action, which will queue thunks, then apply those thunks and dispatch their return values.
 
 Now, the handles `RUN_PRESSED` like this:
 
@@ -142,7 +142,7 @@ I didn't want to expose `dispatch` to the host, so the host code returns a Promi
 
 ## Running Code
 
-Evaluating code, especially JavaScript is a tricky thing for a few reasons. First, there are some gross security implications to executing arbitrary code. Second, `eval` runs JavaScript in the main event loop, which will cause the browser to hang if the code has a deep stack (recursive Fibonacci) or infinite loops (which happens a lot on a site that teaches programming). Additionally, the native API for user input in the browser is with `prompt`, which blocks the event loop with a big modal in the page.
+Evaluating code, especially JavaScript is a tricky thing for a few reasons. First, there are some sticky security implications to executing arbitrary code. Second, `eval` runs JavaScript in the main event loop, which will cause the browser to hang if the code has a deep stack (recursive Fibonacci) or infinite loops (which happens a lot on a site that teaches programming). Additionally, the native API for user input in the browser is with `prompt`, which blocks the event loop with a big modal in the page.
 
 To solve the issues of security, code evaluates in an `iframe` embedded in the editor. All communication is done using [`Window.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage). This has the added benefit of mirroring the model we have for running Java, Python, etc. code on our code servers.
 
@@ -160,7 +160,7 @@ This still leaves the issue of blocking the event loop. To solve that, I use som
 
 ## Layout is State
 
-One of my earliest priorities was a configurable UI that doesn't break the rules of Redux. I didn't want to use jQuery or other DOM interaction for resizing, but wanted to handle it entirely in the state of the application.
+One of my earliest priorities was a configurable UI that doesn't break the rules of Redux. I wanted to keep all resizing in application of state rather than using jQuery or other straight DOM interaction.
 
 The initial way I did this was by building essentially a window manager.
 

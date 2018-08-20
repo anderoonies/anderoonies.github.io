@@ -152,11 +152,3 @@ Next, not making it.
 Ketch, of course, wasn't the next big thing. I can blame this on the un-ideal team or whatever else, but the truth is this was probably never going to succeed. That sucks, given that it was my idea to start with and I put _so many_ hours into Ketch.
 
 As soon as NUvention finished, Ketch stopped existing. The Facebook page still gets a like every once in a while. A person _somehow_ finds the Facebook page and, thinking it's some social network they've never heard of, likes it. Our customer segment, now, is one stranger every 4 weeks.
-
-## So What?
-
-I got a lot out of Ketch. I've learned what a small start-up is like, I've learned what "agile development" means, I've learned what a dysfunctional team is like, I've learned iOS development.
-
-I got a good profile picture from the final pitch.
-
-<img src="/about/me.png" align="center" width="100%">
