@@ -1,0 +1,53 @@
+.root {
+    display: flex;
+    height: 500px;
+}
+
+.split {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+.v-split {
+    flex-direction: column;
+}
+
+.h-split {
+    flex-direction: row;
+}
+
+.pane {
+    flex-grow: 1;
+    flex-basis: 0;
+    border: dashed black;
+}
+
+.grow-2 {
+    flex-grow: 2;
+}
+
+.grow-1 {
+    flex-grow: 1;
+}
+
+
+.state{
+    width: 50%;
+    display:flex;
+}
+pre {
+    overflow: scroll;
+    height: 500px;
+    width: 100%;
+    display:flex;
+}
+
+.grid {
+    width: 50%;
+    display:flex;
+}
+
+.container {
+    width: 100%;
+}
