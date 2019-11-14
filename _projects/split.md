@@ -1,7 +1,8 @@
 ---
 title: Split
 layout: page
-excerpt: react/redux
+excerpt: React/Redux
+photo_url: /projects/split/split.png
 ---
 
 React with Redux for managing flattened state representing a nested grid.
