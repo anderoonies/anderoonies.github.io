@@ -15,12 +15,12 @@ I studied music performance and computer science at Northwestern University with
 
 I do full-stack work at CodeHS. I redesigned our web IDE to be faster, smaller, and more portable, built a reliable, scaling infrastructure for our code servers, and led work on our Python autograders.
 
-#### [**Ketch**]({{site.url}}/projects/ketch) | _Developer_
+## Open Source
 
-I was the developer and designer for an app created within Northwestern's NUvention program. I've written about my experience working on the app [on this site]({{site.url/projects/ketch}}).
+### [**CubeCubra**](https://cubecobra.com) | _Contributor_
+Regular contributions to software for building and playtesting Magic: The Gathering cubes.
 
 #### [**Atom**](https://atom.io/) | _Contributor_
-
 I've contributed to a few Atom packages, including [`tree-view`](https://github.com/atom/tree-view) and [`tabs`](https://github.com/atom/tabs).
 
 ## Skills

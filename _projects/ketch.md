@@ -156,7 +156,3 @@ As soon as NUvention finished, Ketch stopped existing. The Facebook page still g
 ## So What?
 
 I got a lot out of Ketch. I've learned what a small start-up is like, I've learned what "agile development" means, I've learned what a dysfunctional team is like, I've learned iOS development.
-
-I got a good profile picture from the final pitch.
-
-<img src="/about/me.png" align="center" width="100%">
