@@ -13,12 +13,13 @@ I studied music performance and computer science at Northwestern University with
 
 #### [**CodeHS**](https://codehs.com/) | _Software Engineer_
 
-I do full-stack work at CodeHS. I redesigned our web IDE to be faster, smaller, and more portable, built a reliable, scaling infrastructure for our code servers, and led work on our Python autograders.
+I do full-stack work at CodeHS. I redesigned our web IDE to be faster, smaller, and more portable, built a reliable, scaling infrastructure for our code servers, and led work on our Python autograders. AWS, Django, JavaScript.
 
 ## Open Source
 
-### [**CubeCubra**](https://cubecobra.com) | _Contributor_
+#### [**CubeCubra**](https://cubecobra.com) | _Contributor_
 Regular contributions to software for building and playtesting Magic: The Gathering cubes. Check out my [pauper cube](https://cubecobra.com/cube/list/andyscube)!
+
 
 #### [**Atom**](https://atom.io/) | _Contributor_
 I've contributed to a few Atom packages, including [`tree-view`](https://github.com/atom/tree-view) and [`tabs`](https://github.com/atom/tabs).
