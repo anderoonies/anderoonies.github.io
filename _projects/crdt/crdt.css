@@ -1,0 +1,9 @@
+.box {
+    display: flex;
+}
+
+#root {
+    width: 500px;
+    flex: 1 1;
+    margin-right: 30px;
+}
