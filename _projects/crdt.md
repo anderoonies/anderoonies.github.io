@@ -22,7 +22,15 @@ WIP. All thanks to [teletype](https://github.com/atom/teletype)!
     <br>
     <a href="https://github.com/anderoonies/crdt-server" target="_blank">Server code</a>
     </div>
+</div>
+<hr>
 <div>
+<p>TODO</p>
+<ul>
+    <li>use teletype's `marker` structure for handling cursors</li>
+    <li>handle selections</li>
+</ul>
+</div>
 
 <link rel="stylesheet" href="/projects/crdt/crdt.css" type="text/css">
 <script src="/projects/crdt/bundle.js"></script>
