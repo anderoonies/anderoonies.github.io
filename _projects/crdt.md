@@ -5,7 +5,8 @@ excerpt: Collaborative editing with conflict free replicated data types
 ---
 
 WIP
-Thanks to Teletype
+
+All thanks to [teletype](github.com/atom/teletype).
 
 <div id="root"></div>
 <script src="/projects/crdt/bundle.js"></script>
