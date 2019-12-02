@@ -2,6 +2,7 @@
 title: CRDT Editor
 layout: page
 excerpt: Collaborative editing with conflict free replicated data types
+photo_url: /projects/crdt/crdt.png
 ---
 
 WIP. All thanks to [teletype](https://github.com/atom/teletype)!

@@ -78,7 +78,7 @@ div.entry a:hover {
 div.entry img {
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   vertical-align: center;
   pointer-events: none;
   opacity: 0.2;

@@ -8,27 +8,9 @@ permalink: /projects/
 <script src="/js/main.js" type="text/javascript"></script>
 
 <div class="container">
-  {% assign randomized_projects = site.projects | shuffle %}
-  {% for project in randomized_projects %}
-    {% assign loopindex = forloop.index | modulo: 2 %}
-    {% if loopindex == 1 %}
+  {% for project in site.projects %}
     <div class="row">
-      <div class="one-half column entry">
-        <a href="{{project.url}}"></a>
-        <div class="padded-content">
-          <div class="title">
-            {{project.title}}
-          </div>
-          {% if project.excerpt %}
-          <div class="excerpt">
-            {{ project.excerpt }}
-          </div>
-          {% endif %}
-          <img src="{{ project.photo_url }}">
-        </div>
-      </div>
-    {% else %}
-      <div class="one-half column entry">
+      <div class="entry">
         <a href="{{project.url}}"></a>
         <div class="padded-content">
           <div class="title">
@@ -43,6 +25,5 @@ permalink: /projects/
         </div>
       </div>
     </div>
-    {% endif %}
   {% endfor %}
 </div>
