@@ -7,6 +7,7 @@ photo_url: /projects/recursiveshadowcasting/img.png
 
 My implementation of FOV using recursive shadowcasting in React.
 Use arrow keys to move around and click the world to add/remove walls.
+You probably have to move after adding a wall to get a shadow from it, there's some bug.
 
 Read more <a href="http://www.roguebasin.com/index.php?title=FOV_using_recursive_shadowcasting">here!</a>
 
