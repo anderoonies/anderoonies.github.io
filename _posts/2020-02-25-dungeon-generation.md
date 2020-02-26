@@ -87,7 +87,7 @@ To fix, that the rooms are treated as physics bodies and relaxed.
 
 ## Dungeon Relaxation
 
-Guneon relaxation is performed with separation steering. Rooms are treated as individual agents who act according to their neighbors. Their instinct is to move away from any room near them.
+Dungeon relaxation is performed with separation steering. Rooms are treated as individual agents who act according to their neighbors. Their instinct is to move away from any room near them.
 
 ```js
 const intersect = (roomA, roomB) => {
