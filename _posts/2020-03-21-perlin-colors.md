@@ -8,14 +8,14 @@ title: Perlin Noise for Color Generation
 Perlin Noise is a noise algorithm that produces organic-looking noise. In traditional noise, each pixel is "unaware" of its surroundings and position, and the result looks like chaotic, like TV static.
 
 <div class="image-feature">
-  <img style="width: 200px" src="/projects/perlin/purenoise.png"></img>
+  <img style="width: 200px" src="/projects/perlin/purenoise.png">
   <div class="caption">Pure noise looks chaotic.</div>
 </div>
 
 Perlin noise creates randomness at a broader level, and each pixel is influenced by this randomness in a way that appears organic.
 
 <div class="image-feature">
-  <img style="width: 400px" src="/projects/perlin/perlinnoise.png"></img>
+  <img style="width: 400px" src="/projects/perlin/perlinnoise.png">
   <div class="caption">Perlin noise looks nice to touch.</div>
 </div>
 
@@ -24,7 +24,7 @@ Perlin noise creates randomness at a broader level, and each pixel is influenced
 Rather than introducing randomness for each pixel, randomness is used to determine the direction of gradient vectors at the vertices of a "supergrid".
 
 <div class="image-feature">
-  <img style="width: 400px" src="/projects/perlin/gradientvectors.png"></img>
+  <img style="width: 400px" src="/projects/perlin/gradientvectors.png">
 </div>
 
 Points in the grid are influenced by these vectors, like a leaf moving through a creek might be pulled and pushed by currents. This is done mathematically with dot products between points in the grid and each gradient vector in the corresponding square of the supergrid.
