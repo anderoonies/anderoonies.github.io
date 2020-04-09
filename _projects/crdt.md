@@ -5,6 +5,8 @@ excerpt: Collaborative editing with conflict free replicated data types
 photo_url: /projects/crdt/crdt.png
 ---
 
+## This isn't working right now because I'm using my heroku server for work, sorry
+
 WIP. All thanks to [teletype](https://github.com/atom/teletype)!
 
 <div class="box">
