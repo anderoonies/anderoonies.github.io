@@ -36,12 +36,14 @@ Pathing distance is calculated using A*, a variation of Dijkstra's algorithm tha
 Here's an example you can play with. **Left click a cell** (sorry mobile users), **then right click another cell**, and the path between them will be shown using a path of `o`s, and total distance in the top**. The numbers that appear are the distance from the starting cell (left click).
 
 <div class="root" id="dijkstra-root"></div>
-<script src="/projects/brogue/dijkstrabundle.js"></script>
+<script src="/projects/brogue/dijkstrabundle.js"></script
+>
 
-You can try to identify cells that would meet the condition for loopiness. **The dungeon below which adds the loops it finds**, but with shallow water as the doors 🙃 Some dungeons (especially at this tiny size) don't require loops to be added, so **step through if you don't see one at first**.
+You can try to identify cells that would meet the condition for loopiness. **The dungeon below adds the loops it finds**, but with shallow water as the doors 🙃 Some dungeons (especially at this tiny size) don't require loops to be added, so **step through if you don't see one at first**.
 
 <div class="root" id="loopy-root"></div>
 <script src="/projects/brogue/loopybundle.js"></script>
+
 
 ## Lakes
 
@@ -54,6 +56,7 @@ Try it here—**clicking a cell will start a flood fill** from that location. If
 <div class="root" id="flood-root"></div>
 <script src="/projects/brogue/floodbundle.js"></script>
 
+
 Here's the total code, including code which adds "wreaths," the shallow areas that surround the lake like a halo.
 
 <script src="https://gist.github.com/anderoonies/725abb65de4b33378adf4210abb055dc.js"></script>
@@ -62,6 +65,7 @@ And here are the final lakes, not disrupting passibility, with those wreaths add
 
 <div class="root" id="lake-root"></div>
 <script src="/projects/brogue/lakebundle.js"></script>
+
 
 ## Later
 I'll write more later about adding features, like grass and bones, lighting, and memory.
