@@ -34,4 +34,4 @@ WIP. All thanks to [teletype](https://github.com/atom/teletype)!
 </div>
 
 <link rel="stylesheet" href="/projects/crdt/crdt.css" type="text/css">
-<script src="/projects/crdt/bundle.min.js"></script>
+<script src="/projects/crdt/bundle.js"></script>
