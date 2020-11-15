@@ -18,10 +18,11 @@ I do full-stack work at CodeHS. I redesigned our web IDE to be faster, smaller, 
 ## Open Source
 
 #### [**CubeCubra**](https://cubecobra.com) | _Contributor_
-Regular contributions to software for building and playtesting Magic: The Gathering cubes. Check out my [pauper cube](https://cubecobra.com/cube/list/andyscube)!
 
+Regular contributions to software for building and playtesting Magic: The Gathering cubes. Check out my [pauper cube](https://cubecobra.com/cube/list/andy)!
 
 #### [**Atom**](https://atom.io/) | _Contributor_
+
 I've contributed to a few Atom packages, including [`tree-view`](https://github.com/atom/tree-view) and [`tabs`](https://github.com/atom/tabs).
 
 ## Skills

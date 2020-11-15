@@ -1,19 +1,20 @@
 ---
 layout: post
-title:  Broguelike Dungeon Creation, Part 2
+title: Broguelike Dungeon Creation, Part 2
 excerpt: Loops and lakes
 ---
 
 This is part 2 of implementing Brogue's dungeon generation algorithm in JavaScript. Part one is [here]({% post_url 2020-03-17-brogue-generation %}).
 
 ## Loops
+
 Last post left off with something like this:
 
 <div class="image-feature">
   <img style="width: 600px" src="/projects/brogue/prev.png">
 </div>
 
-This is fully-connected dungeon made of a few kinds of rooms. The one problem with it is that it's a tree—each room except the starting room links to exactly one "parent," shown here:
+This is fully-connected dungeon made of a few kinds of rooms. One of the problems is that it's a tree—each room except the starting room links to exactly one "parent," shown here:
 
 <div class="image-feature">
   <img style="width: 600px" src="/projects/brogue/tree_annotated.png">
@@ -31,9 +32,9 @@ If all three of these conditions are met, a door is placed, and rooms that were 
 
 All of this is straightforward to check except rule 3, which requires an algorithm for determining pathing distance.
 
-Pathing distance is calculated using A*, a variation of Dijkstra's algorithm that uses a heuristic function. In this case, the heuristic is Manhattan distance. Adding a heuristic function means that the search function will try searching in the general direction of the destination before trying other routes.
+Pathing distance is calculated using A\*, a variation of Dijkstra's algorithm that uses a heuristic function. In this case, the heuristic is Manhattan distance. Adding a heuristic function means that the search function will try searching in the general direction of the destination before trying other routes.
 
-Here's an example you can play with. **Left click a cell** (sorry mobile users), **then right click another cell**, and the path between them will be shown using a path of `o`s, and total distance in the top**. The numbers that appear are the distance from the starting cell (left click).
+Here's an example you can play with. **Left click a cell** (sorry mobile users), **then right click another cell**, and the path between them will be shown using a path of `o`s, and total distance in the top\*\*. The numbers that appear are the distance from the starting cell (left click).
 
 <div class="root" id="dijkstra-root"></div>
 <script src="/projects/brogue/dijkstrabundle.js"></script
@@ -43,7 +44,6 @@ You can try to identify cells that would meet the condition for loopiness. **The
 
 <div class="root" id="loopy-root"></div>
 <script src="/projects/brogue/loopybundle.js"></script>
-
 
 ## Lakes
 
@@ -56,7 +56,6 @@ Try it here—**clicking a cell will start a flood fill** from that location. If
 <div class="root" id="flood-root"></div>
 <script src="/projects/brogue/floodbundle.js"></script>
 
-
 Here's the total code, including code which adds "wreaths," the shallow areas that surround the lake like a halo.
 
 <script src="https://gist.github.com/anderoonies/725abb65de4b33378adf4210abb055dc.js"></script>
@@ -65,7 +64,6 @@ And here are the final lakes, not disrupting passibility, with those wreaths add
 
 <div class="root" id="lake-root"></div>
 <script src="/projects/brogue/lakebundle.js"></script>
-
 
 ## Part 3
 Part three is now [here]({% post_url 2020-11-14-brogue-generation-3 %}).
