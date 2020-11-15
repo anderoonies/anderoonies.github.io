@@ -7,7 +7,7 @@ excerpt: More procedural dungeon creation
 [Brogue](https://sites.google.com/site/broguegame/) is a procedurally generated roguelike with a great dungeon creation system. The dungeons feel organic and real, with enough complexity to create unique playthroughs.
 
 <div class="image-feature">
-  <img src="https://308192c9-a-62cb3a1a-s-sites.googlegroups.com/site/broguegame/home/screenshots/Bridges.png?attachauth=ANoY7cpKYe1AX-Lh7ScjPxoO_GLIuI8w1r4geSfgSXk8uwJ17EfJ5KqU3ry8Cna74vW1EjMlBvyGr7o7lsqWjNQTQVTK4t1T-afogXCW5P0Jsi2IftUvr5AS61jBbNAWqyZpHu6UlxfIJ6xQmf3JGGOkAg_5xPqAF6M1hcZl2SmBNBezNVy64N9BJXnmiKKKYkomcd6lDjnMwYcOJ3zv69TNRxfFHaOp6QbLV0B2URkmI7TB0W47iDE%3D&attredirects=0">
+  <img src="https://lh4.googleusercontent.com/QbiLnBbYFlLcilCvPNiZoIDpVVfTmE8UuSbvnFJbQbRnNJpFnI3w7garwSf2zqpsJkU7nL4M3I5RsZ4_EN7aeVeMMjZiVcvm32-bi7ag4E56EwyM_HWr=w1280">
 </div>
 
 I've started re-creating the dungeon creation algorithm in JavaScript, based on a [talk Brian Walker gave at Roguelike Celebration](https://www.youtube.com/watch?v=Uo9-IcHhq_w) and the source code, which is bundled with the game release.
@@ -61,7 +61,7 @@ Room accretion is a cool way to introduce a core technique in the algorithm whic
 A room "fits" if none of its tiles overlap with the dungeon and one of its doorways faces the dungeon. Once a room is placed, its doorways are ignored, and rooms may connect to it at any tile.
 
 ## A "final" dungeon
-Here's a dungeon with loops and lakes added, which I'll discuss later. Generation takes a second. I'm working on it.
+Here's a dungeon with loops and lakes added, which I'll discuss later. Generation takes a second. I'm working on it. (Author's note: this performance issue is fixed in future versions. Read on in part 2, linked below!)
 
 <div class="root" id="debug-root"></div>
 <script src="/projects/brogue/debugbundle.js"></script>
@@ -71,5 +71,5 @@ Here's a dungeon with loops and lakes added, which I'll discuss later. Generatio
 My source code is [here](https://github.com/anderoonies/rogue-monster)
 Brogue's source is available with download [here](https://sites.google.com/site/broguegame/) or extracted on GitHub [here](https://github.com/tsadok/brogue).
 
-## Later
-I'll write more later about adding loopiness, lakes, caverns, flora, lighting and memory.
+## Part 2
+Part two is now [here]({% post_url 2020-04-7-brogue-generation-2 %}).

@@ -67,5 +67,5 @@ And here are the final lakes, not disrupting passibility, with those wreaths add
 <script src="/projects/brogue/lakebundle.js"></script>
 
 
-## Later
-I'll write more later about adding features, like grass and bones, lighting, and memory.
+## Part 3
+Part three is now [here]({% post_url 2020-11-14-brogue-generation-3 %}).
