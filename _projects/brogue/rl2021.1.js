@@ -28830,10 +28830,10 @@ const DEBUG_FLAGS = {
     FIT: true,
 };
 const WIDTH = DEBUG_FLAGS.FIT
-    ? Math.min(2 *
+    ? Math.max(2 *
         Math.round(Math.floor(document.getElementById('rot-container').getBoundingClientRect().width / 20) / 2), 40)
     : 80;
-const HEIGHT = DEBUG_FLAGS.FIT ? 2 * Math.round(WIDTH / 4 / 2) : 32;
+const HEIGHT = DEBUG_FLAGS.FIT ? Math.max(20, 2 * Math.round(WIDTH / 4 / 2)) : 32;
 // rooms
 const ROOM_MIN_WIDTH = 4;
 const ROOM_MAX_WIDTH = 20;
