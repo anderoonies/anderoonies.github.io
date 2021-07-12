@@ -487,7 +487,7 @@ This dungeon doesn't have a minimum height, so there's a good chance for bugs I 
 
 I've tacked the seed on at the bottom, if you run into an erroring dungeon and want to help out, feel tree to make a GitHub issue with the seed.
 
-Not very mobile friendly at this 
+Not mobile friendly right now, but it will be!
 
 <style>
     canvas {
