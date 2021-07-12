@@ -2,6 +2,8 @@
 layout: post
 title:  r/roguelikedev Does The Complete Roguelike Tutorial - Weeks 1, 2
 excerpt: Creating a roguelike in TypScript
+meta: /projects/brogue/fov.gif
+
 ---
 
 This is the first of a few posts about creating a roguelike for the 2021 "RoguelikeDev Does The Complete Roguelike Tutorial" event hosted on reddit.com/r/roguelikedev and in the RoguelikeDev Discord.
@@ -484,6 +486,8 @@ You can see that tall plants block FOV.
 This dungeon doesn't have a minimum height, so there's a good chance for bugs I haven't encountered in testing.
 
 I've tacked the seed on at the bottom, if you run into an erroring dungeon and want to help out, feel tree to make a GitHub issue with the seed.
+
+Not very mobile friendly at this 
 
 <style>
     canvas {
