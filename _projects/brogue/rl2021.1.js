@@ -28830,14 +28830,8 @@ const DEBUG_FLAGS = {
     FIT: true,
 };
 const WIDTH = DEBUG_FLAGS.FIT
-<<<<<<< HEAD
     ? Math.min(2 *
         Math.round(Math.floor(document.getElementById('rot-container').getBoundingClientRect().width / 20) / 2), 40)
-=======
-    ? 2 *
-        Math.round(Math.floor(document.getElementById('rot-container').getBoundingClientRect().width / 20) /
-            2)
->>>>>>> 0536c2265f68f59596c272ace6ce524d82732107
     : 80;
 const HEIGHT = DEBUG_FLAGS.FIT ? 2 * Math.round(WIDTH / 4 / 2) : 32;
 // rooms
