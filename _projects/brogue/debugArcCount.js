@@ -32337,16 +32337,19 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
 "use strict";
-/*!******************************!*\
-  !*** ./src/entries/final.ts ***!
-  \******************************/
+/*!**************************************!*\
+  !*** ./src/entries/debugarccount.ts ***!
+  \**************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index */ "./src/entries/index.ts");
 
-(0,_index__WEBPACK_IMPORTED_MODULE_0__.launch)('final', {});
+(0,_index__WEBPACK_IMPORTED_MODULE_0__.launch)('debug-arc-count', {
+    SHOW_PASSABLE_ARC_COUNT: true,
+    OMNISCIENT: true,
+});
 
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=final.js.map
+//# sourceMappingURL=debugArcCount.js.map
