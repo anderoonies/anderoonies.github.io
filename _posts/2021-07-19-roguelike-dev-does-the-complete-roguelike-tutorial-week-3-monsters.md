@@ -136,4 +136,4 @@ And finally, an interactive widget to show this algorithm in action. Hover over 
 Here's a dungeon as it stands at the end of this week. Monsters are always visible, so this is like a "go say hi to every monster" game. Next week, I'll add monster/player interactions, UI, and might add some more features like chasms and lava.
 
 <div id="final"></div>
-<script src="/projects/brogue/final.js"></script>
+<script src="/projects/brogue/week3.final.js"></script>
