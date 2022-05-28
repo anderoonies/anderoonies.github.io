@@ -27,6 +27,6 @@ halftone(
   attach(dotsizeLabel);
   dotsizeSlider.addEventListener("input", () => {
     const dotsize = parseInt(dotsizeSlider.value, 10);
-    halftone(0, dotsize, PIXELS_PER_DOT, dotsizeCtx, sourceCtx, WIDTH, HEIGHT);
+    halftone(0, dotsize, dotsize, dotsizeCtx, sourceCtx, WIDTH, HEIGHT);
   });
 })();
