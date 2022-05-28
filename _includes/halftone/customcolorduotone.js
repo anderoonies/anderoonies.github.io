@@ -52,8 +52,8 @@ stillLifeReady.then(() => {
       width: STILL_LIFE_WIDTH,
       height: STILL_LIFE_HEIGHT,
       color: colorTwo,
-      layer: true
-    );
+      layer: true,
+    });
   };
   drawCustomDuotone();
 
