@@ -7,10 +7,10 @@ duotoneAngleSlider.type = "range";
 duotoneAngleSlider.value = 45;
 duotoneAngleSlider.min = 0;
 duotoneAngleSlider.max = 89;
-attach(duotoneAngleSlider);
 const duotoneAngleSliderLabel = document.createElement("span");
 duotoneAngleSliderLabel.innerHTML = `${duotoneAngleSlider.value} degrees`;
 attach(duotoneAngleSliderLabel);
+attach(duotoneAngleSlider);
 
 stillLifeReady.then(() => {
   resize(duotone, STILL_LIFE_WIDTH, STILL_LIFE_HEIGHT);
@@ -21,10 +21,10 @@ stillLifeReady.then(() => {
       3,
       3,
       duotoneCtx,
-      grayCtx,
+      stillLifeCtx,
       STILL_LIFE_WIDTH,
       STILL_LIFE_HEIGHT,
-      "gray",
+      "crimson",
       true
     );
     halftone(
@@ -32,17 +32,13 @@ stillLifeReady.then(() => {
       2,
       3,
       duotoneCtx,
-      blackCtx,
+      stillLifeCtx,
       STILL_LIFE_WIDTH,
       STILL_LIFE_HEIGHT,
       "black",
       true
     );
   };
-  thresholdSlider.addEventListener("input", () => {
-    duotoneCtx.clearRect(0, 0, STILL_LIFE_WIDTH, STILL_LIFE_HEIGHT);
-    drawDuotone();
-  });
   duotoneAngleSlider.addEventListener("input", () => {
     duotoneCtx.clearRect(0, 0, STILL_LIFE_WIDTH, STILL_LIFE_HEIGHT);
     drawDuotone();

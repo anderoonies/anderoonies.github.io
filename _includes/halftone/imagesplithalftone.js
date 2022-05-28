@@ -14,24 +14,21 @@ stillLifeReady.then(() => {
       3,
       3,
       grayHalftoneCtx,
-      grayCtx,
+      stillLifeCtx,
       STILL_LIFE_WIDTH,
       STILL_LIFE_HEIGHT,
-      'black'
+      "black"
     );
     halftone(
       0,
       2,
       3,
       blackHalftoneCtx,
-      blackCtx,
+      stillLifeCtx,
       STILL_LIFE_WIDTH,
       STILL_LIFE_HEIGHT,
-      'black'
+      "black"
     );
   };
-  thresholdSlider.addEventListener("input", () => {
-    halftoneGrayAndBlack();
-  });
   halftoneGrayAndBlack();
 });

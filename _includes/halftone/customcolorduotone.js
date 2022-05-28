@@ -52,4 +52,8 @@ stillLifeReady.then(() => {
     );
   };
   drawCustomDuotone();
+
+  duotoneAngleSlider.addEventListener("input", () => {
+    drawCustomDuotone();
+  });
 });

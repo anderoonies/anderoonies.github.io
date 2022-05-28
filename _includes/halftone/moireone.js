@@ -13,8 +13,8 @@ const [redBlueAngleSlider, redBlueAngleSliderLabel] = createSlider(
   45,
   (v) => `${v} degrees`
 );
-attach(redBlueAngleSlider);
 attach(redBlueAngleSliderLabel);
+attach(redBlueAngleSlider);
 
 (() => {
   const redBlueCtx = redBlueCanvas.getContext("2d");

@@ -83,7 +83,7 @@ const createSlider = (min, max, value, labelTextFn) => {
   slider.max = max;
   slider.value = value;
   slider.type = "range";
-  const label = document.createElement("span");
+  const label = document.createElement("label");
   label.innerHTML = labelTextFn(value);
   slider.addEventListener("input", () => {
     label.innerHTML = labelTextFn(slider.value);
@@ -108,8 +108,8 @@ const createSlider = (min, max, value, labelTextFn) => {
     0,
     (v) => `${v} degrees`
   );
-  attach(angleSlider);
   attach(angleSliderLabel);
+  attach(angleSlider);
   angleSlider.addEventListener("input", (e) => {
     const deg = parseInt(angleSlider.value, 10);
     halftone(
