@@ -10,9 +10,13 @@ const compositeBirdContext = compositeBirdCanvas.getContext("2d");
 
 const birdReady = new Promise((resolve) => {
   birdImage.onload = () => {
+    const aspectRatio = birdImage.height / birdImage.width;
+    birdImage.width = Math.min(birdImage.width, window.screen.width - 50);
+    birdImage.height = birdImage.width * aspectRatio;
+
     resize(birdCanvas, birdImage.width, birdImage.height);
     resize(compositeBirdCanvas, birdImage.width, birdImage.height);
-    birdContext.drawImage(birdImage, 0, 0);
+    birdContext.drawImage(birdImage, 0, 0, birdImage.width, birdImage.height);
     halftoneBird();
   };
 });
