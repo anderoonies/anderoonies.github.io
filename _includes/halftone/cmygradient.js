@@ -48,26 +48,26 @@ const cmykGradientCompositeCtx = cmykGradientComposite.getContext("2d");
       }
     }
     grayscaleCtx.putImageData(grayscaleImageData, 0, 0);
-    halftone(
-      0,
-      3,
-      3,
-      ctx,
-      grayscaleCtx,
-      rgbGradientCanvas.width,
-      rgbGradientCanvas.height,
-      ctx.fillStyle
-    );
-    halftone(
-      i * 33,
-      2,
-      3,
-      cmykGradientCompositeCtx,
-      grayscaleCtx,
-      rgbGradientCanvas.width,
-      rgbGradientCanvas.height,
-      ctx.fillStyle,
-      true
-    );
+    halftone({
+      angle: 0,
+      dotSize: 3,
+      dotResolution: 3,
+      targetCtx: ctx,
+      sourceCtx: grayscaleCtx,
+      width: rgbGradientCanvas.width,
+      height: rgbGradientCanvas.height,
+      color: ctx.fillStyle,
+    });
+    halftone({
+      angle: i * 33,
+      dotSize: 2,
+      dotResolution: 3,
+      targetCtx: cmykGradientCompositeCtx,
+      sourceCtx: grayscaleCtx,
+      width: rgbGradientCanvas.width,
+      height: rgbGradientCanvas.height,
+      color: ctx.fillStyle,
+      layer: true,
+    });
   });
 })();

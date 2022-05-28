@@ -20,18 +20,27 @@ attach(redBlueAngleSlider);
   const redBlueCtx = redBlueCanvas.getContext("2d");
 
   const redraw = () => {
-    halftone(0, 10, 10, redBlueCtx, valueCtx, 200, 200, "red");
-    halftone(
-      redBlueAngleSlider.value,
-      10,
-      10,
-      redBlueCtx,
-      valueCtx,
-      200,
-      200,
-      "blue",
-      true
-    );
+    halftone({
+      angle: 0,
+      dotSize: 10,
+      dotResolution: 10,
+      targetCtx: redBlueCtx,
+      sourceCtx: valueCtx,
+      width: 200,
+      height: 200,
+      color: "red",
+    });
+    halftone({
+      angle: redBlueAngleSlider.value,
+      dotSize: 10,
+      dotResolution: 10,
+      targetCtx: redBlueCtx,
+      sourceCtx: valueCtx,
+      width: 200,
+      height: 200,
+      color: "blue",
+      layer: true,
+    });
   };
 
   redBlueAngleSlider.addEventListener("input", () => {

@@ -1,6 +1,11 @@
 const cmykComposite = createCanvas(200, 200);
 const cmykAngles = createCanvas(200, 200);
 
+const CYAN = "rgba(0, 255, 255, 0.8)";
+const YELLOW = "rgba(255, 255, 0, 0.8)";
+const MAGENTA = "rgba(255, 0, 255, 0.8)";
+const KEY = "rgba(0, 0, 0, 0.8)";
+
 attach(cmykComposite);
 attach(cmykAngles);
 
@@ -77,28 +82,57 @@ const drawArrow = (ctx, angle, color, length) => {
 
   const drawArrows = () => {
     cmykAnglesCtx.clearRect(0, 0, 200, 200);
-    drawArrow(cmykAnglesCtx, angles.cyan, "cyan", 150);
-    drawArrow(cmykAnglesCtx, angles.magenta, "magenta", 150);
-    drawArrow(cmykAnglesCtx, angles.yellow, "yellow", 150);
-    drawArrow(cmykAnglesCtx, angles.key, "black", 150);
+    drawArrow(cmykAnglesCtx, angles.cyan, CYAN, 150);
+    drawArrow(cmykAnglesCtx, angles.magenta, MAGENTA, 150);
+    drawArrow(cmykAnglesCtx, angles.yellow, YELLOW, 150);
+    drawArrow(cmykAnglesCtx, angles.key, KEY, 150);
   };
 
   const drawComposite = () => {
     cmykCtx.globalAlpha = 0.75;
-    halftone(angles.yellow, 10, 10, cmykCtx, valueCtx, 400, 400, "yellow");
-    halftone(angles.cyan, 10, 10, cmykCtx, valueCtx, 400, 400, "cyan", true);
-    halftone(
-      angles.magenta,
-      10,
-      10,
-      cmykCtx,
-      valueCtx,
-      400,
-      400,
-      "magenta",
-      true
-    );
-    halftone(angles.key, 10, 10, cmykCtx, valueCtx, 400, 400, "black", true);
+    halftone({
+      angle: angles.yellow,
+      dotSize: 10,
+      dotResolution: 10,
+      targetCtx: cmykCtx,
+      sourceCtx: valueCtx,
+      width: 400,
+      height: 400,
+      color: YELLOW,
+    });
+    halftone({
+      angle: angles.cyan,
+      dotSize: 10,
+      dotResolution: 10,
+      targetCtx: cmykCtx,
+      sourceCtx: valueCtx,
+      width: 400,
+      height: 400,
+      color: CYAN,
+      layer: true,
+    });
+    halftone({
+      angle: angles.magenta,
+      dotSize: 10,
+      dotResolution: 10,
+      targetCtx: cmykCtx,
+      sourceCtx: valueCtx,
+      width: 400,
+      height: 400,
+      color: MAGENTA,
+      layer: true,
+    });
+    halftone({
+      angle: angles.key,
+      dotSize: 10,
+      dotResolution: 10,
+      targetCtx: cmykCtx,
+      sourceCtx: valueCtx,
+      width: 400,
+      height: 400,
+      color: KEY,
+      layer: true,
+    });
   };
 
   cyanSlider.addEventListener("input", (e) => {

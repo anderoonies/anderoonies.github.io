@@ -9,21 +9,22 @@ const rotatePointAboutPosition = ([x, y], [rotX, rotY], angle) => {
   ];
 };
 
-const halftone = (
+const halftone = ({
   angle,
-  dotsize,
+  dotSize,
   dotResolution,
   targetCtx,
   sourceCtx,
   width,
   height,
   color,
-  layer = false
-) => {
-  targetCtx.fillStyle = color;
+  layer,
+}) => {
   const sourceImageData = sourceCtx.getImageData(0, 0, width, height);
   angle = (angle * Math.PI) / 180;
-  layer || targetCtx.clearRect(0, 0, width, height);
+  targetCtx.fillStyle = "white";
+  layer || targetCtx.fillRect(0, 0, width, height);
+  targetCtx.fillStyle = color || "black";
   // get the four corners of the screen
   const tl = [0, 0];
   const tr = [width, 0];
@@ -59,15 +60,12 @@ const halftone = (
         Math.floor(rotatedY),
         width
       );
-      const [r, g, b, a] = [
-        sourceImageData.data[index + 0],
-        sourceImageData.data[index + 1],
-        sourceImageData.data[index + 2],
-        sourceImageData.data[index + 3],
-      ];
-      if (a) {
-        const value = (r + g + b) / 3;
-        const circleRadius = map(value, 0, 255, dotsize / 2, 0);
+      // we're always operating on grayscale images, so just grab the value from
+      // the red channel.
+      const value = sourceImageData.data[index];
+      const alpha = sourceImageData.data[index + 3];
+      if (alpha) {
+        const circleRadius = map(value, 0, 255, dotSize / 2, 0);
         targetCtx.beginPath();
         targetCtx.arc(rotatedX, rotatedY, circleRadius, 0, Math.PI * 2);
         targetCtx.closePath();
@@ -92,15 +90,15 @@ const createSlider = (min, max, value, labelTextFn) => {
 };
 
 (() => {
-  halftone(
-    0,
-    PIXELS_PER_DOT,
-    PIXELS_PER_DOT,
-    rotationCtx,
-    sourceCtx,
-    WIDTH,
-    HEIGHT
-  );
+  halftone({
+    angle: 0,
+    dotSize: PIXELS_PER_DOT,
+    dotResolution: PIXELS_PER_DOT,
+    targetCtx: rotationCtx,
+    sourceCtx: sourceCtx,
+    width: WIDTH,
+    height: HEIGHT,
+  });
 
   const [angleSlider, angleSliderLabel] = createSlider(
     0,
@@ -112,14 +110,14 @@ const createSlider = (min, max, value, labelTextFn) => {
   attach(angleSlider);
   angleSlider.addEventListener("input", (e) => {
     const deg = parseInt(angleSlider.value, 10);
-    halftone(
-      deg,
-      PIXELS_PER_DOT,
-      PIXELS_PER_DOT,
-      rotationCtx,
-      sourceCtx,
-      WIDTH,
-      HEIGHT
-    );
+    halftone({
+      angle: deg,
+      dotSize: PIXELS_PER_DOT,
+      dotResolution: PIXELS_PER_DOT,
+      targetCtx: rotationCtx,
+      sourceCtx: sourceCtx,
+      width: WIDTH,
+      height: HEIGHT,
+    });
   });
 })();

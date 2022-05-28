@@ -106,14 +106,6 @@ const halftoneBird = () => {
     birdCanvas.height
   );
   compositeBirdContext.clearRect(0, 0, birdCanvas.width, birdCanvas.height);
-  const cyanCanvas = createCanvas(birdCanvas.width, birdCanvas.height);
-  const cyanCtx = cyanCanvas.getContext("2d");
-  const magentaCanvas = createCanvas(birdCanvas.width, birdCanvas.height);
-  const magentaCtx = magentaCanvas.getContext("2d");
-  const yellowCanvas = createCanvas(birdCanvas.width, birdCanvas.height);
-  const yellowCtx = yellowCanvas.getContext("2d");
-  const keyCanvas = createCanvas(birdCanvas.width, birdCanvas.height);
-  const keyCtx = keyCanvas.getContext("2d");
 
   const inMemoryCanvas = createCanvas(birdCanvas.width, birdCanvas.height);
   const grayscaleCtx = inMemoryCanvas.getContext("2d");
@@ -124,16 +116,15 @@ const halftoneBird = () => {
     inMemoryCanvas.height
   );
   [
-    { ctx: yellowCtx, angle: birdAngles.yellow, color: "yellow", channel: 2 },
+    { angle: birdAngles.yellow, color: YELLOW, channel: 2 },
     {
-      ctx: magentaCtx,
       angle: birdAngles.magenta,
-      color: "magenta",
+      color: MAGENTA,
       channel: 1,
     },
-    { ctx: cyanCtx, angle: birdAngles.cyan, color: "cyan", channel: 0 },
-    { ctx: keyCtx, angle: birdAngles.key, color: "black" },
-  ].forEach(({ ctx, angle, color, channel }) => {
+    { angle: birdAngles.cyan, color: CYAN, channel: 0 },
+    { angle: birdAngles.key, color: KEY, key: true },
+  ].forEach(({ ctx, angle, color, channel, key }) => {
     for (let y = 0; y < birdCanvas.height; y++) {
       for (let x = 0; x < birdCanvas.width; x++) {
         const index = positionToDataIndex(x, y, birdCanvas.width);
@@ -144,7 +135,7 @@ const halftoneBird = () => {
           birdData.data[index + 3],
         ];
         const keyValue = 255 - Math.max(r, g, b);
-        if (color === "black") {
+        if (key) {
           grayscaleImageData.data[index + 0] = 255 - keyValue;
           grayscaleImageData.data[index + 1] = 255 - keyValue;
           grayscaleImageData.data[index + 2] = 255 - keyValue;
@@ -159,16 +150,16 @@ const halftoneBird = () => {
       }
     }
     grayscaleCtx.putImageData(grayscaleImageData, 0, 0);
-    halftone(
-      angle,
-      parseInt(birdDotSizeSlider.value, 10),
-      parseInt(birdResolutionSlider.value, 10),
-      compositeBirdContext,
-      grayscaleCtx,
-      birdCanvas.width,
-      birdCanvas.height,
-      color,
-      true
-    );
+    halftone({
+      angle: angle,
+      dotSize: parseInt(birdDotSizeSlider.value, 10),
+      dotResolution: parseInt(birdResolutionSlider.value, 10),
+      targetCtx: compositeBirdContext,
+      sourceCtx: grayscaleCtx,
+      width: birdCanvas.width,
+      height: birdCanvas.height,
+      color: color,
+      layer: true,
+    });
   });
 };

@@ -4,11 +4,17 @@ attach(customColorCanvas);
 const pickerOne = document.createElement("input");
 pickerOne.type = "color";
 pickerOne.value = "gray";
+const pickerOneLabel = document.createElement("label");
+pickerOneLabel.innerHTML = "Color one";
+attach(pickerOneLabel);
 attach(pickerOne);
 
 const pickerTwo = document.createElement("input");
 pickerTwo.type = "color";
 pickerOne.value = "black";
+const pickerTwoLabel = document.createElement("label");
+pickerTwoLabel.innerHTML = "Color two";
+attach(pickerTwoLabel);
 attach(pickerTwo);
 
 stillLifeReady.then(() => {
@@ -27,28 +33,26 @@ stillLifeReady.then(() => {
   });
 
   const drawCustomDuotone = () => {
-    customColorCtx.clearRect(0, 0, STILL_LIFE_WIDTH, STILL_LIFE_HEIGHT);
-    halftone(
-      0,
-      3,
-      3,
-      customColorCtx,
-      stillLifeCtx,
-      STILL_LIFE_WIDTH,
-      STILL_LIFE_HEIGHT,
-      colorOne,
-      true
-    );
-    halftone(
-      duotoneAngleSlider.value,
-      3,
-      3,
-      customColorCtx,
-      stillLifeCtx,
-      STILL_LIFE_WIDTH,
-      STILL_LIFE_HEIGHT,
-      colorTwo,
-      true
+    halftone({
+      angle: 0,
+      dotSize: 5,
+      dotResolution: 3,
+      targetCtx: customColorCtx,
+      sourceCtx: stillLifeLayerOneCtx,
+      width: STILL_LIFE_WIDTH,
+      height: STILL_LIFE_HEIGHT,
+      color: colorOne,
+    });
+    halftone({
+      angle: duotoneAngleSlider.value,
+      dotSize: 5,
+      dotResolution: 3,
+      targetCtx: customColorCtx,
+      sourceCtx: stillLifeLayerTwoCtx,
+      width: STILL_LIFE_WIDTH,
+      height: STILL_LIFE_HEIGHT,
+      color: colorTwo,
+      layer: true
     );
   };
   drawCustomDuotone();

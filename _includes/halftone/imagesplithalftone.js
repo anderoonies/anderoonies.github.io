@@ -9,16 +9,16 @@ stillLifeReady.then(() => {
   resize(blackHalftone, STILL_LIFE_WIDTH, STILL_LIFE_HEIGHT);
 
   const halftoneGrayAndBlack = () => {
-    halftone(
-      0,
-      3,
-      3,
+    halftone({
+      angle: 0,
+      dotSize:2,
+      dotResolution: 3,
       grayHalftoneCtx,
       stillLifeCtx,
       STILL_LIFE_WIDTH,
       STILL_LIFE_HEIGHT,
       "black"
-    );
+  });
     halftone(
       0,
       2,

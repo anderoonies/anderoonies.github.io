@@ -8,7 +8,7 @@ const stillLife = new Image();
 let STILL_LIFE_WIDTH, STILL_LIFE_HEIGHT;
 
 const stillLifeReady = new Promise((resolve) => {
-  stillLife.src = "/projects/halftone/stilllife.jpg";
+  stillLife.src = "/projects/halftone/stilllife.jpeg";
   stillLife.onload = () => {
     STILL_LIFE_WIDTH = stillLife.width;
     STILL_LIFE_HEIGHT = stillLife.height;

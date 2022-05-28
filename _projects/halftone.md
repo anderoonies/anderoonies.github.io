@@ -5,25 +5,27 @@ excerpt: Recreating something old
 photo_url: /projects/
 ---
 
+# JavaScript for Halftone Printing
+
 Halftone printing is a technique for printing continuous value using dots of solid color with varying size or spacing. Because continuous values can't be printed using a single color of ink, halftones are used to create the illusion of continuous color. From a distance, the discrete dots produced by a halftone appear to produce intermediate values.
 
 <div class="image-feature">
   <img src="/projects/halftone/gradient.png" style="max-width: 80vw; width: 400px">
-  <div class="caption">From <i>The Atlas of Analytical Signatures of Photographic Processes: Halftone</i> by Dusan C. Stulik.</div>
+  <div class="caption">The Atlas of Analytical Signatures of Photographic Processes The Getty Conservation Institute, © 2013 J. Paul Getty Trust</div>
 </div>
 
 By printing different colors of ink through layered halftones it's possible to create the illusion of the color of the original image.
 
 <div class="image-feature">
   <img src="/projects/halftone/color.png" style="max-width: 80vw; width: 400px">
-  <div class="caption">From <i>The Atlas of Analytical Signatures of Photographic Processes: Halftone</i> by Dusan C. Stulik.</div>
+  <div class="caption">The Atlas of Analytical Signatures of Photographic Processes The Getty Conservation Institute, © 2013 J. Paul Getty Trust</div>
 </div>
 
-Note that this is meant to be illustrative, not a one-to-one replica of the process. I'm embracing the artifacts that happen as a result of trying to imitate it.
+This article is meant to be illustrative, not a one-to-one replica of the printing process. I'm embracing the artifacts that happen as a result of trying to imitate it. The images generated here may appear differently based on the device you're using.
 
 ## Generating Halftones
 
-Traditionally, halftone screens were made by exposing high-contrast film through a mesh screen, which would create dots on the film. Here, we're going to imitate this process by creating dots on an HTML5 canvas.
+Traditionally, halftone screens were made by exposing high-contrast film through a mesh screen, which would create dots on the film. Here, we're going to imitate this process by drawing circles on an HTML5 canvas.
 
 We'll begin by generating a halftone from a grayscale gradient. Areas of the gradient which are darker will result in larger dots in our halftone, and areas of the gradient which are lighter will result in smaller dots.
 
@@ -38,7 +40,7 @@ We'll begin by generating a halftone from a grayscale gradient. Areas of the gra
     </div>
 </div>
 
-To generate the halftone, we'll sample the source canvas's color data at a regular interval and draw a dot (with `context.arc()`) sized based on the value of the gradient at that point.
+To generate the halftone, we'll sample the source canvas's color data at a regular interval and draw a dot (with `context.arc()`) sized based on the value of the gradient at that point. The value is extracted from the 2d rendering context's `ImageData`, which is organized as a flat array of `[R, G, B, A, R, G, B, A, ...]`.
 
 <div class="snippet">
 {% highlight javascript %}
@@ -51,8 +53,11 @@ To generate the halftone, we'll sample the source canvas's color data at a regul
     </div>
 </div>
 
-Next, lets look at what happens when the angle of the screen changes.
-To change the screen angle, the code conceptually rotates the entire screen around its center to find the positions of the dots that will need to be drawn. Because a screen of the same size as the image wouldn't cover the entire image when rotated, the conceptual boundaries of the screen are expanded.
+The size of the circle in the half tone corresponds to the source image's value, which is some number between 0 and 255. In a grayscale image, the red, green, and blue channels will all have the same value, so the pixel's value can just be taken from `imageData.data[index]`, which is the red channel of the pixel.
+Even when printing a color image the halftones are generated from grayscale, so we'll be able to use this same trick later on.
+
+Let's look at what happens when the angle of the screen changes.
+To change the screen angle, the code conceptually rotates the entire screen around its center to find the positions of the dots that will need to be drawn. Because a screen of the same size as the image wouldn't cover the entire image when rotated, the boundaries for iteration are expanded to cover the full region covered by the screen.
 
 <div class="snippet">
 {% highlight javascript %}
@@ -80,39 +85,71 @@ We can also change the size of dots and the resolution of dots. When we approach
     </div>
 </div>
 
+This is the `halftone` function we'll use throughout the rest of this article. It takes an:
+* `angle` to rotate the halftone screen by, 
+* `dotSize` which determines the radius of a dot,
+* `dotResolution` which is the space between dots, 
+* `targetCtx` onto which it will draw, 
+* `sourceCtx` from which it will extract value (it assumes it is grayscale),
+* `width` and `height` of the source and target, and 
+* `color` it will use for dots. 
+* `layer` determines whether the target context should be cleared before drawing.
+
+The `halftone` function iterates over a 2-dimensional grid of positions where it would like to put a dot. When making a dot, it samples the source context's image data, converts the value from a range of 0-255 to a radius, and draws a circle at that position in the target context.
+
 ## Layering Halftones
 
-Using a single color of ink results in a loss of detail when printing the darkest values. Because the only way to achieve a dark value in a single halftone is with large dots, the detail becomes limited by the size of the dot (and any resulting ink bleed).
+Because the only way to print a darker value is putting more ink through a larger dot, darker areas of a printed image suffer from over-saturation and ink bleed. In order to maintain high detail in dark areas, multiple layers are printed using different color inks, called a "duotone."
 
-The solution is printing in multiple layers with different color inks, called a "duotone." The dark areas of the image are printed using black ink, and middle values would be printed using a lighter color of ink. When the two layers are superimposed, the dark areas appear darker without over-saturating.
+<div class="image-feature">
+  <img src="/projects/halftone/duotone.jpg" style="max-width: 80vw; width: 400px">
+  <div class="caption">The Atlas of Analytical Signatures of Photographic Processes The Getty Conservation Institute, © 2013 J. Paul Getty Trust</div>
+</div>
 
-Let's create a duotone of this still life, <i>Maiolica Basket of Fruit</i> by Fede Galizia.
+The dark areas of the image are still printed using black ink, but at a finer resolution to avoid over-saturation. A second layer is printed using a lighter ink, so when the two layers are superimposed, the dark areas appear dark while maintaining detail. This is called a "duotone."
+
+Let's create a duotone of this still life by Goya.
 
 <div class="snippet">
 {% highlight javascript %}
-{% include halftone/imagesplit.js %}
+{% include halftone/stilllife.js %}
 {% endhighlight %}
     <div class="canvas-container">
     <script>
-        {% include halftone/imagesplit.js %}
+        {% include halftone/stilllife.js %}
     </script>
     </div>
 </div>
 
-Let's now convert those two grayscales into halftones. The halftone we're using to print black will have smaller dots, to prevent over-saturation and bleed.
+First, let's look at the result of generating a halftone directly from this image. I'm using a resolution of 3 pixels between dots and a dot diameter of 5 pixels.
 
 <div class="snippet">
 {% highlight javascript %}
-{% include halftone/imagesplithalftone.js %}
+{% include halftone/stilllifehalftone.js %}
 {% endhighlight %}
     <div class="canvas-container">
     <script>
-        {% include halftone/imagesplithalftone.js %}
+        {% include halftone/stilllifehalftone.js %}
     </script>
     </div>
 </div>
 
-Finally, let's draw those two halftones on the same canvas, but with different ink colors. The darker colors will still use black, but the lighter colors will use gray. We'll make one final, vital adjustment: **the two layers will be offset by 45º**.
+The area around the grapes (?) is very dark, and we lose some of the detail of the image because of how densely the dots are packed. The bottles in the background also disappear, because the dot size is oversaturated. Let's try to solve this using a duotone.
+
+First, the image is split into two separate layers. The first layer contains all values, and will be printed first in a light color. The second layer contains primarily the darkest colors, and will be printed second in black. The exact distribution of value between the layers is usually controlled with a duotone curve, but in our case I'll just split on values darker than 127.
+
+<div class="snippet">
+{% highlight javascript %}
+{% include halftone/stilllifesplit.js %}
+{% endhighlight %}
+    <div class="canvas-container">
+    <script>
+        {% include halftone/stilllifesplit.js %}
+    </script>
+    </div>
+</div>
+
+Next, we'll generate halftones from these two grayscale images and stack these two halftones on top of eachother, printing brown first, then our shadows second in black.
 
 <div class="snippet">
 {% highlight javascript %}
@@ -125,9 +162,9 @@ Finally, let's draw those two halftones on the same canvas, but with different i
     </div>
 </div>
 
-Move the slider the entire way to 0, and notice how this is visually identical to just the gray layer alone. When the two screens are offset, though, the gray midvalues are visible. Importantly, reduced the size of the dots, so the blackest areas are no longer over-saturated but still appear dark.
+When the two screens are offset, the two layers overlap and form a dark value without making the dots too large. You can see the outlines of the bottles against the dark background and the contour of the pears.
 
-Early duotones were produced from photographs, but ink color was chosen manually. You can play with that here.
+Early duotones were produced from photographs, but ink color was chosen manually in order to match the mood of the original. You can play with that here.
 
 <div class="snippet">
 {% highlight javascript %}
@@ -140,7 +177,7 @@ Early duotones were produced from photographs, but ink color was chosen manually
     </div>
 </div>
 
-Also, note the grid pattern that appears when sliding the angle. This is called a **moiré**, and we're going to figure out how to eliminate it.
+When overlaying the two layers you may have noticed a distracting grid-like pattern. This is called a **moiré**, and we're going to look at how to control it.
 
 ## Moiré and Rosettes
 
@@ -174,15 +211,22 @@ Let's look at eliminating the moiré with four layers: cyan, magenta, yellow, an
 
 There is no single "best" set of angles, but the angles are designed to maximize the distance between cyan, magenta and key. Because yellow is least visible, it can be comfortably aligned with cyan or magenta without producing visible moiré.
 
-This alignment produces a specific moiré called a "rosette," which is the least distracting moiré. Rosettes occur at a high frequency in printed material, which makes them difficult to see at distance.
+This alignment produces a specific moiré called a "rosette," which is the least distracting moiré. Rosettes occur at a high frequency in printed material, which makes them difficult to see at distance. Look closely at printed material and you can find them.
+
+<div class="image-feature">
+  <img src="/projects/halftone/rosette.jpg" style="max-width: 80vw; width: 400px">
+  <div class="caption">The Atlas of Analytical Signatures of Photographic Processes The Getty Conservation Institute, © 2013 J. Paul Getty Trust</div>
+</div>
 
 ## Converting an Image to CMYK
 
 CMYK is a "subtractive" color model, compared with additive color models like LCD screens. Cyan, magenta, and yellow act as filters that absorb color from the printing substrate. Cyan is the complement of red, so the presence of cyan prevents red light from being reflected back to the viewer.
 
-To calculate the corresponding CMY values for an RGB color, then, we can just take the complement of each channel. Cyan is the complement of red, magents is the complement of green, and blue is the complement of yellow.
+To calculate the corresponding CMY values for an RGB color, then, we can just take the complement of each channel (255 - value). Cyan is the complement of red, magents is the complement of green, and blue is the complement of yellow.
 
-Here's a canvas with an RGB gradient (ignore the gray that gets generated when doing RGB interpolation) and the three individual CMY half tones created from it, then those three composited. I extract each to a grayscale in-memory canvas first, which may seem unnecessarily complex, but it's in keeping with the practical way these halftones would be generated.
+Here's a canvas with an RGB gradient (ignore the gray that gets generated when doing RGB interpolation) and the three individual CMY half tones created from it, then those three composited.
+
+I extract each to a grayscale in-memory canvas first, which may seem unnecessarily complex, but it's in keeping with the practical way these halftones would be generated. Halftone generation is concerned only with _value_, not color, so I convert the color to grayscale then create a halftone from that grayscale.
 
 <div class="snippet">
 {% highlight javascript %}
@@ -195,7 +239,17 @@ Here's a canvas with an RGB gradient (ignore the gray that gets generated when d
     </div>
 </div>
 
-The only bit that's left is extracting the key, which is done by extracting the value of the color. That key value is subtracted from each of the CMY colors.
+The only bit that's left is extracting the key, which is done by extracting the darkest value of the color. That key value is subtracted from each of the CMY colors.
+
+For example, given the pixel `(126, 18, 20)`, the key is equal to `255 - max(126, 18, 20) == (255 - 126) == 129`. 
+
+Then, the cyan channel is equal to `(255 - R - K) == (255 - 126 - 129)`,
+
+the magenta channel is equal to `(255 - G - K) == (255 - 126 - 18)`, and
+
+the yellow channel is equal to `(255 - B - K) == (255 - 126 - 20)`.
+
+There's one last thing that needs to happen, which is complementing this value. We're creating a grayscale image to generate our halftone from, and because **dark values produce dots**, we'll want to finally take the complement of this value. For example, with our cyan channel of `(255 - 126 - 129) == 0`, we should end up with _no_ dot in the resulting cyan halftone. A white value will produce no dot, so subtracting our value from white (`(255, 255, 255)`) will give us that result. This math can be simplified, but keeping it longform makes conceptual sense to me.
 
 The final example allows all parameters to be configured. I've manually chosen halftone angles that I think "look good," which is of course my right.
 
@@ -216,6 +270,7 @@ The final example allows all parameters to be configured. I've manually chosen h
         align-items: center;
         flex-wrap: wrap;
         justify-content: center;
+        margin-bottom: 15px;
     }
     .snippet figure {
         overflow: auto;
