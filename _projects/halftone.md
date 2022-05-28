@@ -113,7 +113,7 @@ Because the only way to print a darker value is putting more ink through a large
   <div class="caption">The Atlas of Analytical Signatures of Photographic Processes The Getty Conservation Institute, © 2013 J. Paul Getty Trust</div>
 </div>
 
-The dark areas of the image are still printed using black ink, but at a finer resolution to avoid over-saturation. A second layer is printed using a lighter ink, so when the two layers are superimposed, the dark areas appear dark while maintaining detail. This is called a "duotone."
+The dark areas of the image are still printed using black ink, but at a finer resolution to avoid over-saturation. A second layer is printed using a lighter ink, so when the two layers are superimposed, the dark areas appear dark while maintaining detail.
 
 Let's create a duotone of this still life by Goya.
 
