@@ -2,7 +2,7 @@
 title: JavaScript for Halftone Printing
 layout: page
 excerpt: Recreating something old
-photo_url: /projects/
+photo_url: /projects/halftone/header.png
 ---
 
 # JavaScript for Halftone Printing
