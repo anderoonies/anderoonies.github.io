@@ -7,14 +7,16 @@ photo_url: /projects/halftone/header.png
 
 # JavaScript for Halftone Printing
 
-Halftone printing is a technique for printing continuous value using dots of solid color with varying size or spacing. Because continuous values can't be printed using a single color of ink, halftones are used to create the illusion of continuous color. From a distance, the discrete dots produced by a halftone appear to produce intermediate values.
+Halftone printing is a technique for printing continuous value using dots of solid color with varying size or spacing.
+
+Halftones were invented in the 19th century as a way to accurately reproduce photographs in print. Ink can only print one value (black or white), but halftones introduce the illusion of continous value with the size and spacing of dots.
 
 <div class="image-feature">
-  <img src="/projects/halftone/gradient.png" style="max-width: 80vw; width: 400px">
-  <div class="caption">The Atlas of Analytical Signatures of Photographic Processes The Getty Conservation Institute, © 2013 J. Paul Getty Trust</div>
+  <img src="/projects/halftone/first.jpg" style="max-width: 80vw; width: 400px">
+  <div class="caption">The first halftone print, a recreation of a photograph of Prince Albert from Canadian Illustrated News in 1869. The density of printed dots creates continuous value.</div>
 </div>
 
-By printing different colors of ink through layered halftones it's possible to create the illusion of the color of the original image.
+Additionally, by printing different colors of ink through layered halftones, it's possible to create the illusion of the color of the original image.
 
 <div class="image-feature">
   <img src="/projects/halftone/color.png" style="max-width: 80vw; width: 400px">
@@ -26,6 +28,11 @@ This article is meant to be illustrative, not a one-to-one replica of the printi
 ## Generating Halftones
 
 Traditionally, halftone screens were made by exposing high-contrast film through a mesh screen, which would create dots on the film. Here, we're going to imitate this process by drawing circles on an HTML5 canvas.
+
+<div class="image-feature">
+  <img src="/projects/halftone/gradient.png" style="max-width: 80vw; width: 400px">
+  <div class="caption">The Atlas of Analytical Signatures of Photographic Processes The Getty Conservation Institute, © 2013 J. Paul Getty Trust</div>
+</div>
 
 We'll begin by generating a halftone from a grayscale gradient. Areas of the gradient which are darker will result in larger dots in our halftone, and areas of the gradient which are lighter will result in smaller dots.
 
