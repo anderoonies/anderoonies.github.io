@@ -248,7 +248,7 @@ I extract each to a grayscale in-memory canvas first, which may seem unnecessari
 
 The only bit that's left is extracting the key, which is done by extracting the darkest value of the color. That key value is subtracted from each of the CMY colors.
 
-For example, given the pixel `(126, 18, 20)`, the key is equal to `255 - max(126, 18, 20) == (255 - 126) == 129`. 
+For example, given the pixel `(126, 18, 20)`, the key is equal to `255 - max(126, 18, 20)` which is `(255 - 126) == 129`. 
 
 Then, the cyan channel is equal to `(255 - R - K) == (255 - 126 - 129)`,
 
