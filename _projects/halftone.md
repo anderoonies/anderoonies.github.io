@@ -286,7 +286,7 @@ When an image is printed using halftones in real life, the individual dots are m
 
 The more densely we can pack small dots, the more convincing illusion of color we can create. However, we're unable to draw anything smaller than a pixel, which limits the density of dots we can display. Additionally, when trying to draw anything smaller than a pixel, the canvas aliases the drawing which creates artifacts.
 
-To see this principle in action, consider these two attempts to create the color red:
+To see this principle in action, consider these attempts to create the color red:
 
 <div class="snippet">
 {% highlight javascript %}
