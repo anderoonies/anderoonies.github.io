@@ -12,6 +12,14 @@ betterRedLabel.innerHTML = "Less worse red";
 attach(betterRedLabel);
 attach(betterRed);
 
+const opacityRed = createCanvas(100, 100);
+const opacityRedCtx = opacityRed.getContext("2d");
+opacityRedCtx.globalAlpha = 0.7;
+const opacityRedLabel = document.createElement("label");
+opacityRedLabel.innerHTML = "0.7 globalAlpha";
+attach(opacityRedLabel);
+attach(opacityRed);
+
 const angles = {
   yellow: 0,
   cyan: 15,
@@ -75,6 +83,17 @@ const angles = {
       dotSize: 2,
       dotResolution: 3,
       targetCtx: betterRedCtx,
+      sourceCtx: grayscaleCtx,
+      width: 100,
+      height: 100,
+      color: color,
+      layer: true,
+    });
+    halftone({
+      angle: angle,
+      dotSize: 8,
+      dotResolution: 10,
+      targetCtx: opacityRedCtx,
       sourceCtx: grayscaleCtx,
       width: 100,
       height: 100,

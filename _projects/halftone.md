@@ -301,7 +301,9 @@ To see this principle in action, consider these two attempts to create the color
 
 The first is clearly visible as yellow and magenta. The second, though still unconvincing, appears more red, or at least some peachy color.
 
-With this in mind, it would be possible to create a more convincing print by can achieve a more convincing illusion by printing the image much larger, which allows for more density before we hit the pixel boundary. This is **slow**, but interesting, so I've put it on another page so you can view it if you'd like.
+Additionally, the inks used for halftone printing are not entirely opaque, and ink from lower layers is visible through higher layers. We can try to imitate this with the `globalAlpha` property of the context, or by using a `fillStyle` with an opacity, but the intricate ways that colors mix is hard to replicate here.
+
+With all of this in mind, we can try for a more convincing illusion by printing the image much larger, which allows for more density before we hit the pixel boundary. This is **slow**, but interesting, so I've put it on another page so you can view it if you'd like.
 
 <a target="_blank" href="/projects/halftone/bigbird">See the big birds</a>
 
