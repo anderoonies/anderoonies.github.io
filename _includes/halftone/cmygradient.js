@@ -7,15 +7,15 @@ const cmykGradientCompositeCtx = cmykGradientComposite.getContext("2d");
 (() => {
   const cyanCanvas = createCanvas(200, 100);
   const cyanCtx = cyanCanvas.getContext("2d");
-  cyanCtx.fillStyle = "cyan";
+  cyanCtx.fillStyle = "rgba(0, 255, 255, 0.8)";
   attach(cyanCanvas);
   const magentaCanvas = createCanvas(200, 100);
   const magentaCtx = magentaCanvas.getContext("2d");
-  magentaCtx.fillStyle = "magenta";
+  magentaCtx.fillStyle = "rgba(255, 0, 255, 0.7)";
   attach(magentaCanvas);
   const yellowCanvas = createCanvas(200, 100);
   const yellowCtx = yellowCanvas.getContext("2d");
-  yellowCtx.fillStyle = "yellow";
+  yellowCtx.fillStyle = "rgba(255, 255, 0, 0.8)";
   attach(yellowCanvas);
   attach(cmykGradientComposite);
 

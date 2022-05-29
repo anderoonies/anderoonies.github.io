@@ -110,7 +110,6 @@ permalink: /projects/halftone/bigbird
   birdImage.src = "/projects/halftone/bigbirds.jpg";
   const birdCanvas = createCanvas(1, 1);
   const birdContext = birdCanvas.getContext("2d");
-  attach(birdCanvas);
 
   const compositeBirdCanvas = createCanvas(1, 1);
   attach(compositeBirdCanvas);
@@ -161,7 +160,7 @@ permalink: /projects/halftone/bigbird
         color: "rgba(255, 0, 255, 0.6)",
         channel: 1,
       },
-      { angle: birdAngles.cyan, color: "cyan", channel: 0 },
+      { angle: birdAngles.cyan, color: "rgba(0, 255, 255, 0.6)", channel: 0 },
       { angle: birdAngles.key, color: "black", key: true },
     ].forEach(({ angle, color, channel, key }) => {
       for (let y = 0; y < birdCanvas.height; y++) {
