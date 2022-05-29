@@ -5,8 +5,6 @@ menu: main
 permalink: /projects/halftone/bigbird
 ---
 
-Zoom out a bunch.
-
 <script>
   const domTarget = document.currentScript.parentElement;
   const attach = (node) => {
@@ -132,7 +130,7 @@ Zoom out a bunch.
   });
 
   const birdAngles = {
-    yellow: 45,
+    yellow: 0,
     cyan: 15,
     key: 75,
     magenta: 45,
@@ -160,7 +158,7 @@ Zoom out a bunch.
       { angle: birdAngles.yellow, color: "yellow", channel: 2 },
       {
         angle: birdAngles.magenta,
-        color: "magenta",
+        color: "rgba(255, 0, 255, 0.6)",
         channel: 1,
       },
       { angle: birdAngles.cyan, color: "cyan", channel: 0 },

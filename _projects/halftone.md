@@ -1,11 +1,11 @@
 ---
-title: JavaScript for Halftone Printing
+title: JavaScript of Halftone Printing
 layout: page
 excerpt: Recreating something old
 photo_url: /projects/halftone/header.png
 ---
 
-# JavaScript for Halftone Printing
+# JavaScript of Halftone Printing
 
 Halftone printing is a technique for printing continuous value using dots of solid color with varying size or spacing.
 
@@ -79,7 +79,7 @@ To change the screen angle, the code conceptually rotates the entire screen arou
 
 We'll see later how important the angle of the screens can be when printing multiple layers.
 
-We can also change the size of dots and the resolution of dots. When we approach 1 pixel per dot, the optical illusion of the halftone begins to become more convincing.
+We can also change the maximum size of dots and the resolution of dots. When we approach 1 pixel per dot, the optical illusion of the halftone begins to become more convincing.
 
 <div class="snippet">
 {% highlight javascript %}
@@ -219,7 +219,7 @@ Let's look at eliminating the moiré with four layers: cyan, magenta, yellow, an
 
 There is no single "best" set of angles, but the angles are designed to maximize the distance between cyan, magenta and key. Because yellow is least visible, it can be comfortably aligned with cyan or magenta without producing visible moiré.
 
-This alignment produces a specific moiré called a "rosette," which is the least distracting moiré. Rosettes occur at a high frequency in printed material, which makes them difficult to see at distance. There are a few different angles which produce rosettes with different characteristics. Look closely at printed material and you can find them.
+The most desirable alignments produces a specific moiré called a "rosette."  Rosettes are the smallest moiré, and occur at a high frequency in printed material, which makes them difficult to see at distance. There are a few different sets of angles which produce rosettes with different characteristics. Look closely at printed material and you can find them.
 
 <div class="image-feature">
   <img src="/projects/halftone/rosette.jpg" style="max-width: 80vw; width: 400px">
@@ -230,7 +230,7 @@ This alignment produces a specific moiré called a "rosette," which is the least
 
 CMYK is a "subtractive" color model, compared with additive color models like LCD screens. Cyan, magenta, and yellow act as filters that absorb color from the printing substrate. Cyan is the complement of red, so the presence of cyan prevents red light from being reflected back to the viewer.
 
-To calculate the corresponding CMY values for an RGB color, then, we can just take the complement of each channel (255 - value). Cyan is the complement of red, magents is the complement of green, and blue is the complement of yellow.
+To calculate the corresponding CMY values for an RGB color, then, we can just take the complement of each channel (255 - value). Cyan is the complement of red, magenta is the complement of green, and blue is the complement of yellow.
 
 Here's a canvas with an RGB gradient (ignore the gray that gets generated when doing RGB interpolation) and the three individual CMY half tones created from it, then those three composited.
 
@@ -259,7 +259,7 @@ the yellow channel is equal to `(255 - B - K) == (255 - 126 - 20)`.
 
 There's one last thing that needs to happen, which is complementing this value. We're creating a grayscale image to generate our halftone from, and because **dark values produce dots**, we'll want to finally take the complement of this value. For example, with our cyan channel of `(255 - 126 - 129) == 0`, we should end up with _no_ dot in the resulting cyan halftone. A white value will produce no dot, so subtracting our value from white (`(255, 255, 255)`) will give us that result. This math can be simplified, but keeping it longform makes conceptual sense to me.
 
-This example allows all parameters to be configured. I've manually chosen halftone angles that I think "look good," which is of course my right.
+This example allows all parameters to be configured. I've manually chosen halftone angles that I think "look good," which is of course my right as the "printer."
 
 <div class="snippet">
 {% highlight javascript %}
@@ -274,7 +274,7 @@ This example allows all parameters to be configured. I've manually chosen halfto
 
 ## Limitations
 
-I will admit that this does not look very convincing. The result may be displaying differently on your device, because of pixel ratio or resolution, so here is a close-up comparing details of the two as they appear on my device.
+I will admit that this does not look entirely convincing. The result may be displaying differently on your device, because of pixel ratio or resolution, so here is a close-up comparing details of the two as they appear on my device.
 
 <div class="image-feature">
   <img src="/projects/halftone/birdcomp.jpg" style="max-width: 80vw;">
@@ -282,9 +282,9 @@ I will admit that this does not look very convincing. The result may be displayi
 
 We're fortunate that this bird has plumage that's almost exactly cyan, but its beautiful red head is very magenta. The rich brown of the background is also pretty faded.
 
-When an image is printed using halftones in real life, the individual dots are much too small to be noticed by the eye. Halftones are measured by lines per inch (LPI), which is how many lines of the halftone grid are within a single inch of the printed material. Magazines print at about 133 LPI. On my device, which has a 13.3" display and 2560x1600 resolution, a single inch of horizontal display has 226 pixels. In the bird image above, each line is 2 pixels apart, which gives us 113 LPI. 
+When an image is printed using halftones in real life, the individual dots are much too small to be noticed by the eye. Halftones are measured by lines per inch (LPI), which is how many lines of the halftone grid are within a single inch of the printed material. Magazines print at about 133 LPI. On my device, which has a 13.3" display and 2560x1600 resolution, a single inch of horizontal display has 226 pixels. In the bird image above, each line is 2 pixels apart, which gives us 113 LPI.
 
-The more densely we can pack small dots, the more convincing illusion of color we can create. However, we're unable to draw anything smaller than a pixel, which limits the density of dots we can display. Additionally, when drawing anything smaller than a pixel, the canvas aliases the drawing which creates artifacts.
+The more densely we can pack small dots, the more convincing illusion of color we can create. However, we're unable to draw anything smaller than a pixel, which limits the density of dots we can display. Additionally, when trying to draw anything smaller than a pixel, the canvas aliases the drawing which creates artifacts.
 
 To see this principle in action, consider these two attempts to create the color red:
 
@@ -301,9 +301,21 @@ To see this principle in action, consider these two attempts to create the color
 
 The first is clearly visible as yellow and magenta. The second, though still unconvincing, appears more red, or at least some peachy color.
 
-With this in mind, we can achieve a more convincing illusion by printing the image much larger, which allows for more density before we hit the pixel boundary. This is **slow**, but interesting, so I've put it on another page so you can view it if you'd like.
+With this in mind, it would be possible to create a more convincing print by can achieve a more convincing illusion by printing the image much larger, which allows for more density before we hit the pixel boundary. This is **slow**, but interesting, so I've put it on another page so you can view it if you'd like.
 
 <a target="_blank" href="/projects/halftone/bigbird">See the big birds</a>
+
+## Conclusion
+
+I hope this was informative and interesting, even if it's not entirely practical.
+
+Halftone printing is still incredibly common, and you should now have the understanding to pick it apart. The next time you see cardboard packaging, look at the bottom and you'll see the ink colors used to print. Take a close look at the packaging and you can find the rosettes.
+
+<div class="image-feature">
+  <img src="/projects/halftone/milkink.jpg" style="max-width: 80vw; width: 400px">
+  <img src="/projects/halftone/milkdetail.jpg" style="max-width: 80vw; width: 400px">
+  <div class="caption">Soymilk carton from my fridge. 2022</div>
+</div>
 
 <!-- ## Custom Ink Colors
 Some colors are difficult to replicate in CMYK, or are simply expensive to replicate because of the amount of ink that's needed to produce them.
@@ -339,7 +351,8 @@ We can use this same technique to improve our bird printing. Instead of magenta,
 
 We end up running into a different issue, though, which is that yellow and red are similar colors, so everything ends up kind of orangey. -->
 
-## Aside: Retina and HiDPI Displays
+## Endnote: Retina and HiDPI Displays
+
 My device actually has a retina display, which uses multiple physical pixels to represent one virtual pixel. By doubling the size of the HTML5 canvas but scaling it down using CSS we can make the full use of these pixels. `window.devicePixelRatio` stores this value.
 
 Images generated this way will look crisper, but I've chosen not to use this technique throughout the article.

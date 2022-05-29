@@ -67,7 +67,7 @@
       { angle: birdAngles.yellow, color: "yellow", channel: 2 },
       {
         angle: birdAngles.magenta,
-        color: "magenta",
+        color: "rgba(255, 0, 255, 0.8)",
         channel: 1,
       },
       { angle: birdAngles.cyan, color: "cyan", channel: 0 },
