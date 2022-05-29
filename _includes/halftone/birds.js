@@ -18,6 +18,7 @@ const birdReady = new Promise((resolve) => {
     resize(compositeBirdCanvas, birdImage.width, birdImage.height);
     birdContext.drawImage(birdImage, 0, 0, birdImage.width, birdImage.height);
     halftoneBird();
+    resolve();
   };
 });
 
@@ -121,15 +122,15 @@ const halftoneBird = () => {
     inMemoryCanvas.height
   );
   [
-    { angle: birdAngles.yellow, color: YELLOW, channel: 2 },
+    { angle: birdAngles.yellow, color: "yellow", channel: 2 },
     {
       angle: birdAngles.magenta,
-      color: MAGENTA,
+      color: "magenta",
       channel: 1,
     },
-    { angle: birdAngles.cyan, color: CYAN, channel: 0 },
-    { angle: birdAngles.key, color: KEY, key: true },
-  ].forEach(({ ctx, angle, color, channel, key }) => {
+    { angle: birdAngles.cyan, color: "cyan", channel: 0 },
+    { angle: birdAngles.key, color: "black", key: true },
+  ].forEach(({ angle, color, channel, key }) => {
     for (let y = 0; y < birdCanvas.height; y++) {
       for (let x = 0; x < birdCanvas.width; x++) {
         const index = positionToDataIndex(x, y, birdCanvas.width);

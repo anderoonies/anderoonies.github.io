@@ -44,7 +44,7 @@ const halftone = ({
       let [rotatedX, rotatedY] = rotatePointAboutPosition(
         [x, y],
         [width / 2, height / 2],
-        angle
+        -angle
       );
 
       if (

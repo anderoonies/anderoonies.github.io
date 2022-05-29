@@ -1,11 +1,6 @@
 const cmykComposite = createCanvas(200, 200);
 const cmykAngles = createCanvas(200, 200);
 
-const CYAN = "rgba(0, 255, 255, 0.8)";
-const YELLOW = "rgba(255, 255, 0, 0.8)";
-const MAGENTA = "rgba(255, 0, 255, 0.8)";
-const KEY = "rgba(0, 0, 0, 0.8)";
-
 attach(cmykComposite);
 attach(cmykAngles);
 
@@ -35,8 +30,8 @@ const drawArrow = (ctx, angle, color, length) => {
   const angles = {
     yellow: 0,
     cyan: 15,
-    key: 75,
-    magenta: 45,
+    key: 45,
+    magenta: 75,
   };
   const cmykCtx = cmykComposite.getContext("2d");
   const cmykAnglesCtx = cmykAngles.getContext("2d");
@@ -82,10 +77,10 @@ const drawArrow = (ctx, angle, color, length) => {
 
   const drawArrows = () => {
     cmykAnglesCtx.clearRect(0, 0, 200, 200);
-    drawArrow(cmykAnglesCtx, angles.cyan, CYAN, 150);
-    drawArrow(cmykAnglesCtx, angles.magenta, MAGENTA, 150);
-    drawArrow(cmykAnglesCtx, angles.yellow, YELLOW, 150);
-    drawArrow(cmykAnglesCtx, angles.key, KEY, 150);
+    drawArrow(cmykAnglesCtx, angles.cyan, "cyan", 150);
+    drawArrow(cmykAnglesCtx, angles.magenta, "magenta", 150);
+    drawArrow(cmykAnglesCtx, angles.yellow, "yellow", 150);
+    drawArrow(cmykAnglesCtx, angles.key, "black", 150);
   };
 
   const drawComposite = () => {
@@ -98,7 +93,7 @@ const drawArrow = (ctx, angle, color, length) => {
       sourceCtx: valueCtx,
       width: 400,
       height: 400,
-      color: YELLOW,
+      color: "yellow",
     });
     halftone({
       angle: angles.cyan,
@@ -108,7 +103,7 @@ const drawArrow = (ctx, angle, color, length) => {
       sourceCtx: valueCtx,
       width: 400,
       height: 400,
-      color: CYAN,
+      color: "cyan",
       layer: true,
     });
     halftone({
@@ -119,7 +114,7 @@ const drawArrow = (ctx, angle, color, length) => {
       sourceCtx: valueCtx,
       width: 400,
       height: 400,
-      color: MAGENTA,
+      color: "magenta",
       layer: true,
     });
     halftone({
@@ -130,7 +125,7 @@ const drawArrow = (ctx, angle, color, length) => {
       sourceCtx: valueCtx,
       width: 400,
       height: 400,
-      color: KEY,
+      color: "black",
       layer: true,
     });
   };

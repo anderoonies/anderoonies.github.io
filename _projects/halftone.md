@@ -93,14 +93,15 @@ We can also change the size of dots and the resolution of dots. When we approach
 </div>
 
 This is the `halftone` function we'll use throughout the rest of this article. It takes an:
-* `angle` to rotate the halftone screen by, 
-* `dotSize` which determines the radius of a dot,
-* `dotResolution` which is the space between dots, 
-* `targetCtx` onto which it will draw, 
-* `sourceCtx` from which it will extract value (it assumes it is grayscale),
-* `width` and `height` of the source and target, and 
-* `color` it will use for dots. 
-* `layer` determines whether the target context should be cleared before drawing.
+
+- `angle` to rotate the halftone screen by,
+- `dotSize` which determines the radius of a dot,
+- `dotResolution` which is the space between dots,
+- `targetCtx` onto which it will draw,
+- `sourceCtx` from which it will extract value (it assumes it is grayscale),
+- `width` and `height` of the source and target, and
+- `color` it will use for dots.
+- `layer` determines whether the target context should be cleared before drawing.
 
 The `halftone` function iterates over a 2-dimensional grid of positions where it would like to put a dot. When making a dot, it samples the source context's image data, converts the value from a range of 0-255 to a radius, and draws a circle at that position in the target context.
 
@@ -218,7 +219,7 @@ Let's look at eliminating the moiré with four layers: cyan, magenta, yellow, an
 
 There is no single "best" set of angles, but the angles are designed to maximize the distance between cyan, magenta and key. Because yellow is least visible, it can be comfortably aligned with cyan or magenta without producing visible moiré.
 
-This alignment produces a specific moiré called a "rosette," which is the least distracting moiré. Rosettes occur at a high frequency in printed material, which makes them difficult to see at distance. Look closely at printed material and you can find them.
+This alignment produces a specific moiré called a "rosette," which is the least distracting moiré. Rosettes occur at a high frequency in printed material, which makes them difficult to see at distance. There are a few different angles which produce rosettes with different characteristics. Look closely at printed material and you can find them.
 
 <div class="image-feature">
   <img src="/projects/halftone/rosette.jpg" style="max-width: 80vw; width: 400px">
@@ -248,7 +249,7 @@ I extract each to a grayscale in-memory canvas first, which may seem unnecessari
 
 The only bit that's left is extracting the key, which is done by extracting the darkest value of the color. That key value is subtracted from each of the CMY colors.
 
-For example, given the pixel `(126, 18, 20)`, the key is equal to `255 - max(126, 18, 20)` which is `(255 - 126) == 129`. 
+For example, given the pixel `(126, 18, 20)`, the key is equal to `255 - max(126, 18, 20)` which is `(255 - 126) == 129`.
 
 Then, the cyan channel is equal to `(255 - R - K) == (255 - 126 - 129)`,
 
@@ -258,7 +259,7 @@ the yellow channel is equal to `(255 - B - K) == (255 - 126 - 20)`.
 
 There's one last thing that needs to happen, which is complementing this value. We're creating a grayscale image to generate our halftone from, and because **dark values produce dots**, we'll want to finally take the complement of this value. For example, with our cyan channel of `(255 - 126 - 129) == 0`, we should end up with _no_ dot in the resulting cyan halftone. A white value will produce no dot, so subtracting our value from white (`(255, 255, 255)`) will give us that result. This math can be simplified, but keeping it longform makes conceptual sense to me.
 
-The final example allows all parameters to be configured. I've manually chosen halftone angles that I think "look good," which is of course my right.
+This example allows all parameters to be configured. I've manually chosen halftone angles that I think "look good," which is of course my right.
 
 <div class="snippet">
 {% highlight javascript %}
@@ -267,6 +268,89 @@ The final example allows all parameters to be configured. I've manually chosen h
     <div class="canvas-container">
     <script>
         {% include halftone/birds.js %}
+    </script>
+    </div>
+</div>
+
+## Limitations
+
+I will admit that this does not look very convincing. The result may be displaying differently on your device, because of pixel ratio or resolution, so here is a close-up comparing details of the two as they appear on my device.
+
+<div class="image-feature">
+  <img src="/projects/halftone/birdcomp.jpg" style="max-width: 80vw;">
+</div>
+
+We're fortunate that this bird has plumage that's almost exactly cyan, but its beautiful red head is very magenta. The rich brown of the background is also pretty faded.
+
+When an image is printed using halftones in real life, the individual dots are much too small to be noticed by the eye. Halftones are measured by lines per inch (LPI), which is how many lines of the halftone grid are within a single inch of the printed material. Magazines print at about 133 LPI. On my device, which has a 13.3" display and 2560x1600 resolution, a single inch of horizontal display has 226 pixels. In the bird image above, each line is 2 pixels apart, which gives us 113 LPI. 
+
+The more densely we can pack small dots, the more convincing illusion of color we can create. However, we're unable to draw anything smaller than a pixel, which limits the density of dots we can display. Additionally, when drawing anything smaller than a pixel, the canvas aliases the drawing which creates artifacts.
+
+To see this principle in action, consider these two attempts to create the color red:
+
+<div class="snippet">
+{% highlight javascript %}
+{% include halftone/tworeds.js %}
+{% endhighlight %}
+    <div class="canvas-container">
+    <script>
+        {% include halftone/tworeds.js %}
+    </script>
+    </div>
+</div>
+
+The first is clearly visible as yellow and magenta. The second, though still unconvincing, appears more red, or at least some peachy color.
+
+With this in mind, we can achieve a more convincing illusion by printing the image much larger, which allows for more density before we hit the pixel boundary. This is **slow**, but interesting, so I've put it on another page so you can view it if you'd like.
+
+<a target="_blank" href="/projects/halftone/bigbird">See the big birds</a>
+
+<!-- ## Custom Ink Colors
+Some colors are difficult to replicate in CMYK, or are simply expensive to replicate because of the amount of ink that's needed to produce them.
+
+Brands will often use custom ink colors so they can achieve the exact colors they want. Here's the bottom of a soymilk carton from my fridge:
+
+<div class="image-feature">
+  <img src="/projects/halftone/milkink.jpg" style="max-width: 80vw; width: 400px">
+  <div class="caption">My fridge. 2022</div>
+</div>
+
+This shows the 6 colors of ink used to print the milk carton. We recognize black, yellow, and a sort of reddish magenta, but the three blues are special ink colors chosen based on the branding of the milk carton.
+
+<div class="image-feature">
+  <img src="/projects/halftone/milkdetail.jpg" style="max-width: 80vw; width: 400px">
+  <div class="caption">My fridge. 2022</div>
+</div>
+
+Taking a close look at some of the printed material from the carton, we can see rosettes in the green color, but the blue, which is the second custom ink from above, is a solid block.
+
+We can use this same technique to improve our bird printing. Instead of magenta, let's print red, so we can accurately capture the bird's plume. Our code will be identical, but we'll need to be more careful when determining the value of the red color. Because our color model is subtractice, red will be acting as a mask to its complement, cyan. When sampling our source image, we'll need to find the complement to `(0, 255, 255)`.
+
+<div class="snippet">
+{% highlight javascript %}
+{% include halftone/redbird.js %}
+{% endhighlight %}
+    <div class="canvas-container">
+    <script>
+        {% include halftone/redbird.js %}
+    </script>
+    </div>
+</div>
+
+We end up running into a different issue, though, which is that yellow and red are similar colors, so everything ends up kind of orangey. -->
+
+## Aside: Retina and HiDPI Displays
+My device actually has a retina display, which uses multiple physical pixels to represent one virtual pixel. By doubling the size of the HTML5 canvas but scaling it down using CSS we can make the full use of these pixels. `window.devicePixelRatio` stores this value.
+
+Images generated this way will look crisper, but I've chosen not to use this technique throughout the article.
+
+<div class="snippet">
+{% highlight javascript %}
+{% include halftone/birdsretina.js %}
+{% endhighlight %}
+    <div class="canvas-container">
+    <script>
+        {% include halftone/birdsretina.js %}
     </script>
     </div>
 </div>
