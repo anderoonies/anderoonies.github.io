@@ -372,7 +372,7 @@ We can use this same technique to improve our bird printing. Instead of magenta,
 
 We end up running into a different issue, though, which is that yellow and red are similar colors, so everything ends up kind of orangey. -->
 
-## Endnote: Retina and HiDPI Displays
+<!-- ## Endnote: Retina and HiDPI Displays
 
 My device actually has a retina display, which uses multiple physical pixels to represent one virtual pixel. By doubling the size of the HTML5 canvas but scaling it down using CSS we can make the full use of these pixels. `window.devicePixelRatio` stores this value.
 
@@ -388,6 +388,7 @@ Images generated this way will look crisper, but I've chosen not to use this tec
     </script>
     </div>
 </div>
+-->
 
 <style>
     .snippet {

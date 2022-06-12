@@ -8,6 +8,8 @@ const compositeBirdCanvas = createCanvas(1, 1);
 attach(compositeBirdCanvas);
 const compositeBirdContext = compositeBirdCanvas.getContext("2d");
 
+const target = document.currentScript.parentElement;
+
 const birdReady = new Promise((resolve) => {
   birdImage.onload = () => {
     const aspectRatio = birdImage.height / birdImage.width;
@@ -15,15 +17,24 @@ const birdReady = new Promise((resolve) => {
     birdImage.height = birdImage.width * aspectRatio;
 
     resize(birdCanvas, birdImage.width, birdImage.height);
-    resize(compositeBirdCanvas, birdImage.width, birdImage.height);
     birdContext.drawImage(birdImage, 0, 0, birdImage.width, birdImage.height);
-    halftoneBird();
     resolve();
   };
 });
 
+const drawButton = document.createElement("button");
+drawButton.innerHTML = "Halftone these birds";
+drawButton.addEventListener("click", () => {
+  drawButton.remove();
+  birdReady.then(() => {
+    resize(compositeBirdCanvas, birdImage.width, birdImage.height);
+    halftoneBird();
+  });
+});
+target.appendChild(drawButton);
+
 const birdAngles = {
-  yellow: 0,
+  yellow: 2,
   cyan: 15,
   key: 45,
   magenta: 75,
@@ -82,7 +93,7 @@ attach(birdAngleKeySlider);
 const [birdDotSizeSlider, birdDotSizeSliderLabel] = createSlider(
   1,
   10,
-  3,
+  4,
   (v) => `${v} pixels per dot`
 );
 birdDotSizeSlider.addEventListener("input", () => {
@@ -94,7 +105,7 @@ attach(birdDotSizeSlider);
 const [birdResolutionSlider, birdResolutionSliderLabel] = createSlider(
   1,
   10,
-  2,
+  3,
   (v) => `${v} pixels between dots`
 );
 birdResolutionSlider.addEventListener("input", () => {
