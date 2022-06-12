@@ -3,19 +3,20 @@ attach(rgbGradientCanvas);
 const rgbGradientCtx = rgbGradientCanvas.getContext("2d");
 const cmykGradientComposite = createCanvas(200, 100);
 const cmykGradientCompositeCtx = cmykGradientComposite.getContext("2d");
+cmykGradientCompositeCtx.globalCompositeOperation = "darken";
 
 (() => {
   const cyanCanvas = createCanvas(200, 100);
   const cyanCtx = cyanCanvas.getContext("2d");
-  cyanCtx.fillStyle = "rgba(0, 255, 255, 0.8)";
+  cyanCtx.fillStyle = "cyan";
   attach(cyanCanvas);
   const magentaCanvas = createCanvas(200, 100);
   const magentaCtx = magentaCanvas.getContext("2d");
-  magentaCtx.fillStyle = "rgba(255, 0, 255, 0.7)";
+  magentaCtx.fillStyle = "magenta";
   attach(magentaCanvas);
   const yellowCanvas = createCanvas(200, 100);
   const yellowCtx = yellowCanvas.getContext("2d");
-  yellowCtx.fillStyle = "rgba(255, 255, 0, 0.8)";
+  yellowCtx.fillStyle = "yellow";
   attach(yellowCanvas);
   attach(cmykGradientComposite);
 

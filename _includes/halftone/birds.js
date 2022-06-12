@@ -111,7 +111,9 @@ const halftoneBird = () => {
     birdCanvas.height
   );
   compositeBirdContext.fillStyle = "white";
+  compositeBirdContext.globalCompositeOperation = "source-over";
   compositeBirdContext.fillRect(0, 0, birdCanvas.width, birdCanvas.height);
+  compositeBirdContext.globalCompositeOperation = "darken";
 
   const inMemoryCanvas = createCanvas(birdCanvas.width, birdCanvas.height);
   const grayscaleCtx = inMemoryCanvas.getContext("2d");
