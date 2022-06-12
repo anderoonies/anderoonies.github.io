@@ -23,10 +23,10 @@ const birdReady = new Promise((resolve) => {
 });
 
 const birdAngles = {
-  yellow: 32,
-  cyan: 35,
-  key: 66,
-  magenta: 20,
+  yellow: 0,
+  cyan: 15,
+  key: 45,
+  magenta: 75,
 };
 
 const [birdAngleCyanSlider, birdAngleCyanSliderLabel] = createSlider(

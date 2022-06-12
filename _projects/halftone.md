@@ -60,7 +60,7 @@ To generate the halftone, we'll sample the source canvas's color data at a regul
     </div>
 </div>
 
-The size of the circle in the half tone corresponds to the source image's value, which is some number between 0 and 255. In a grayscale image, the red, green, and blue channels will all have the same value, so the pixel's value can just be taken from `imageData.data[index]`, which is the red channel of the pixel.
+The size of the circle in the half tone corresponds to the source image's value, which is some number between 0 and 255. In a grayscale image, the red, green, and blue channels will all have the same value, so the pixel's value can just be taken from `imageData.data[index + 0]`, which is the red channel of the pixel.
 Even when printing a color image the halftones are generated from grayscale, so we'll be able to use this same trick later on.
 
 Let's look at what happens when the angle of the screen changes.
@@ -226,6 +226,25 @@ The most desirable alignments produces a specific moiré called a "rosette."  Ro
   <div class="caption">The Atlas of Analytical Signatures of Photographic Processes The Getty Conservation Institute, © 2013 J. Paul Getty Trust</div>
 </div>
 
+## Modifying the `globalCompositeOperation`
+The HTML5 canvas has a `globalCompositeOperation` property which dictates how anything being drawn to the canvas should interact with what's already there.
+
+In order to simulate the behavior of ink on paper, we can set `globalCompositeOperation = "darken";` which preserves the darkest (closest to zero) pixel values. For example, adding yellow `(255, 255, 0)` and magenta `(255, 0, 255)` will produce `255, 0, 0`. This is how we'd expect magenta and yellow to interact in printing: yellow masks all blue light, magenta masks all green light, and we're left with just red.
+
+
+<div class="snippet">
+{% highlight javascript %}
+{% include halftone/composite.js %}
+{% endhighlight %}
+    <div class="canvas-container">
+    <script>
+        {% include halftone/composite.js %}
+    </script>
+    </div>
+</div>
+
+This `globalCompositeOperation` causes drawing to slow down quite a bit, so I'm using it only when mixing colors.
+
 ## Converting an Image to CMYK
 
 CMYK is a "subtractive" color model, compared with additive color models like LCD screens. Cyan, magenta, and yellow act as filters that absorb color from the printing substrate. Cyan is the complement of red, so the presence of cyan prevents red light from being reflected back to the viewer.
@@ -272,7 +291,7 @@ This example allows all parameters to be configured. I've manually chosen halfto
     </div>
 </div>
 
-## Limitations
+<!-- ## Limitations
 
 I will admit that this does not look entirely convincing. The result may be displaying differently on your device, because of pixel ratio or resolution, so here is a close-up comparing details of the two as they appear on my device.
 
@@ -305,7 +324,7 @@ Additionally, the inks used for halftone printing are not entirely opaque, and i
 
 With all of this in mind, we can try for a more convincing illusion by printing the image much larger, which allows for more density before we hit the pixel boundary. This is **slow**, but interesting, so I've put it on another page so you can view it if you'd like.
 
-<a target="_blank" href="/projects/halftone/bigbird">See the big birds</a>
+<a target="_blank" href="/projects/halftone/bigbird">See the big birds</a> -->
 
 ## Conclusion
 

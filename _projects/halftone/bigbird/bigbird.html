@@ -55,6 +55,7 @@ permalink: /projects/halftone/bigbird
     const sourceImageData = sourceCtx.getImageData(0, 0, width, height);
     angle = (angle * Math.PI) / 180;
     targetCtx.fillStyle = "white";
+    targetCtx.globalCompositeOperation = "darken";
     layer || targetCtx.fillRect(0, 0, width, height);
     targetCtx.fillStyle = color || "black";
     // get the four corners of the screen
