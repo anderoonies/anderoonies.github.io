@@ -226,7 +226,7 @@ The most desirable alignments produces a specific moiré called a "rosette."  Ro
   <div class="caption">The Atlas of Analytical Signatures of Photographic Processes The Getty Conservation Institute, © 2013 J. Paul Getty Trust</div>
 </div>
 
-## Modifying the `globalCompositeOperation`
+## Modifying the Global Composite Operation
 The HTML5 canvas has a `globalCompositeOperation` property which dictates how anything being drawn to the canvas should interact with what's already there.
 
 In order to simulate the behavior of ink on paper, we can set `globalCompositeOperation = "darken";` which preserves the darkest (closest to zero) pixel values. For example, adding yellow `(255, 255, 0)` and magenta `(255, 0, 255)` will produce `255, 0, 0`. This is how we'd expect magenta and yellow to interact in printing: yellow masks all blue light, magenta masks all green light, and we're left with just red.
