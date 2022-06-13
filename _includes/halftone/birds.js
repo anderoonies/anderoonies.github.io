@@ -93,7 +93,7 @@ attach(birdAngleKeySlider);
 const [birdDotSizeSlider, birdDotSizeSliderLabel] = createSlider(
   1,
   10,
-  4,
+  3,
   (v) => `${v} pixels per dot`
 );
 birdDotSizeSlider.addEventListener("input", () => {
@@ -105,7 +105,7 @@ attach(birdDotSizeSlider);
 const [birdResolutionSlider, birdResolutionSliderLabel] = createSlider(
   1,
   10,
-  3,
+  2,
   (v) => `${v} pixels between dots`
 );
 birdResolutionSlider.addEventListener("input", () => {
