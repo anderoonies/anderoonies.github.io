@@ -226,25 +226,6 @@ The most desirable alignments produces a specific moiré called a "rosette."  Ro
   <div class="caption">The Atlas of Analytical Signatures of Photographic Processes The Getty Conservation Institute, © 2013 J. Paul Getty Trust</div>
 </div>
 
-## Modifying the Global Composite Operation
-The HTML5 canvas has a `globalCompositeOperation` property which dictates how anything being drawn to the canvas should interact with what's already there.
-
-In order to simulate the behavior of ink on paper, we can set `globalCompositeOperation = "darken";` which preserves the darkest (closest to zero) pixel values. For example, adding yellow `(255, 255, 0)` and magenta `(255, 0, 255)` will produce `255, 0, 0`. This is how we'd expect magenta and yellow to interact in printing: yellow masks all blue light, magenta masks all green light, and we're left with just red.
-
-
-<div class="snippet">
-{% highlight javascript %}
-{% include halftone/composite.js %}
-{% endhighlight %}
-    <div class="canvas-container">
-    <script>
-        {% include halftone/composite.js %}
-    </script>
-    </div>
-</div>
-
-This `globalCompositeOperation` causes drawing to slow down quite a bit, so I'm using it only when mixing colors.
-
 ## Converting an Image to CMYK
 
 CMYK is a "subtractive" color model, compared with additive color models like LCD screens. Cyan, magenta, and yellow act as filters that absorb color from the printing substrate. Cyan is the complement of red, so the presence of cyan prevents red light from being reflected back to the viewer.
@@ -277,6 +258,27 @@ the magenta channel is equal to `(255 - G - K) == (255 - 126 - 18)`, and
 the yellow channel is equal to `(255 - B - K) == (255 - 126 - 20)`.
 
 There's one last thing that needs to happen, which is complementing this value. We're creating a grayscale image to generate our halftone from, and because **dark values produce dots**, we'll want to finally take the complement of this value. For example, with our cyan channel of `(255 - 126 - 129) == 0`, we should end up with _no_ dot in the resulting cyan halftone. A white value will produce no dot, so subtracting our value from white (`(255, 255, 255)`) will give us that result. This math can be simplified, but keeping it longform makes conceptual sense to me.
+
+## Modifying the Global Composite Operation
+The HTML5 canvas has a `globalCompositeOperation` property which dictates how anything being drawn to the canvas should interact with what's already there.
+
+In order to simulate the behavior of ink on paper, we can set `globalCompositeOperation = "darken";` which preserves the darkest (closest to zero) pixel values. For example, adding yellow `(255, 255, 0)` and magenta `(255, 0, 255)` will produce `255, 0, 0`. This is how we'd expect magenta and yellow to interact in printing: yellow masks all blue light, magenta masks all green light, and we're left with just red.
+
+
+<div class="snippet">
+{% highlight javascript %}
+{% include halftone/composite.js %}
+{% endhighlight %}
+    <div class="canvas-container">
+    <script>
+        {% include halftone/composite.js %}
+    </script>
+    </div>
+</div>
+
+This `globalCompositeOperation` causes drawing to slow down quite a bit, so I'm using it only when mixing colors.
+
+## Birds
 
 This example allows all parameters to be configured. I've manually chosen halftone angles that I think "look good," which is of course my right as the "printer."
 
