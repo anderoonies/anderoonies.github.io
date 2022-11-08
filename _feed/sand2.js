@@ -13,6 +13,7 @@
     WALL: -1,
     EMPTY: 0,
     SAND: 1,
+    WATER: 2,
   };
 
   const Colors = {
@@ -23,6 +24,10 @@
     [Materials.SAND]: {
       base: { r: 212, g: 168, b: 124, a: 255 },
       variance: { r: 5, g: 5, b: 5 },
+    },
+    [Materials.WATER]: {
+      base: { r: 80, g: 100, b: 230, a: 255 },
+      variance: { r: 20, g: 20, b: 35 },
     },
   };
 
@@ -89,6 +94,39 @@
         } else if (get(dx, 1) === Materials.EMPTY) {
           set(0, 0, Materials.EMPTY);
           set(dx, 1, Materials.SAND);
+        } else if (bottom === Materials.WATER) {
+          set(0, 0, bottom);
+          set(0, 1, cell);
+        }
+        break;
+      }
+      case Materials.WATER: {
+        let bottom = get(0, 1);
+        let dx = choice([-1, 1]);
+        if (bottom === Materials.EMPTY) {
+          set(0, 0, Materials.EMPTY);
+          set(0, 1, cell);
+          return;
+        }
+        if (get(dx, 0) === Materials.EMPTY) {
+          set(0, 0, Materials.EMPTY);
+          set(dx, 0, cell);
+          return;
+        }
+        if (get(dx, 1) === Materials.EMPTY) {
+          set(0, 0, Materials.EMPTY);
+          set(dx, 1, cell);
+          return;
+        }
+        if (get(2, 1) === Materials.EMPTY) {
+          set(0, 0, Materials.EMPTY);
+          set(2, 1, cell);
+          return;
+        }
+        if (get(-2, 1) === Materials.EMPTY) {
+          set(0, 0, Materials.EMPTY);
+          set(-2, 1, cell);
+          return;
         }
         break;
       }
@@ -134,6 +172,12 @@
   const paint = (x, y, material) => {
     world[y][x] = material;
   };
+  const drip = () => {
+    world[50][50] = Materials.WATER;
+    requestAnimationFrame(drip);
+  };
+  drip();
+
   canvas.addEventListener("mousemove", (e) => {
     const { x, y } = mousePosition(canvas, e);
     paint(x, y, Materials.SAND);
