@@ -1,5 +1,10 @@
 (() => {
   const canvas = document.querySelector("canvas");
+  const width = Math.min(400, window.innerWidth - 50);
+  const height = Math.min(400, window.innerHeight - 50);
+  canvas.style.width = `${width}px`;
+  canvas.style.height = `${height}px`;
+
   const ctx = canvas.getContext("2d", { willReadFrequently: true });
   ctx.scale(4, 4);
   ctx.imageSmoothingEnabled = false;
@@ -126,8 +131,17 @@
 
   requestAnimationFrame(update);
 
+  const paint = (x, y, material) => {
+    world[y][x] = material;
+  };
   canvas.addEventListener("mousemove", (e) => {
     const { x, y } = mousePosition(canvas, e);
+    paint(x, y, Materials.SAND);
+  });
+  canvas.addEventListener("touchmove", (e) => {
+    e.preventDefault();
+    const touch = e.touches[0];
+    const { x, y } = mousePosition(canvas, touch);
     world[y][x] = Materials.SAND;
   });
 })();
