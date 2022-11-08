@@ -7,21 +7,28 @@ paginate: 20
 ---
 
 <!-- <script src="/js/main.js" type="text/javascript"></script> -->
+<style>
+  div.entry a {
+    height: unset;
+    width: unset;
+    position: relative;
+  }
+  div.entry {
+    height: unset;
+  }
+</style>
 
 <div class="container">
   {% for thing in site.feed %}
-    <div class="row">
-      <div class="entry">
-        <a href="{{thing.url}}"></a>
-        <div class="padded-content">
-          <div class="title">
-            {{thing.date | date: "%-d %B %Y"}}
-          </div>
-          <div class="excerpt">
-            {{ thing.content }}
-          </div>
-        </div>
+  <div class="row">
+    <div class="entry">
+      <div class="padded-content">
+        <a href="{{thing.url}}">
+          <div class="title">{{thing.date | date: "%-d %B %Y"}}</div>
+        </a>
+        <div class="excerpt">{{ thing.content }}</div>
       </div>
     </div>
+  </div>
   {% endfor %}
 </div>
