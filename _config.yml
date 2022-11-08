@@ -22,6 +22,9 @@ collections:
   projects:
     output: true
     permalink: /projects/:path/
+  feed:
+    output: true
+    permalink: /feed/:path/
 
 gems:
   - jekyll-gist
