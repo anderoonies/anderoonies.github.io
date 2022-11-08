@@ -1,12 +1,12 @@
 (() => {
   const canvas = document.querySelector("canvas");
-  const width = Math.min(400, window.innerWidth - 50);
-  const height = Math.min(400, window.innerHeight - 50);
+  const width = Math.min(300, 300);
+  const height = Math.min(300, 300);
   canvas.style.width = `${width}px`;
   canvas.style.height = `${height}px`;
 
   const ctx = canvas.getContext("2d", { willReadFrequently: true });
-  ctx.scale(4, 4);
+  ctx.scale(3, 3);
   ctx.imageSmoothingEnabled = false;
 
   const Materials = {
