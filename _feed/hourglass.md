@@ -1,0 +1,27 @@
+---
+title: Spin
+layout: food
+description: Spin
+meta: Spin
+---
+
+Spin
+
+<section class="container">
+<div style="width: 400px; height: 400px;">
+<canvas width=100 height=100 style="border: 1px solid black;">
+</canvas>
+<input type="range" min="1" max="100" value="0" class="slider" id="hourglass">
+<style>
+canvas {
+  image-rendering: optimizeSpeed;             /* Older versions of FF          */
+  image-rendering: -moz-crisp-edges;          /* FF 6.0+                       */
+  image-rendering: -webkit-optimize-contrast; /* Safari                        */
+  image-rendering: -o-crisp-edges;            /* OS X & Windows Opera (12.02+) */
+  image-rendering: pixelated;                 /* Awesome future-browsers       */
+  -ms-interpolation-mode: nearest-neighbor;   /* IE                            */
+}
+</style>
+<script src="/feed/hourglass.js"></script>
+</div>
+</section>
