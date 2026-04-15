@@ -4,6 +4,12 @@ title: Broguelike Dungeon Creation, Part 2
 excerpt: Loops and lakes
 ---
 
+<style>
+  .cell.door {
+    background-color: #DC267F !important;
+  }
+</style>
+
 This is part 2 of implementing Brogue's dungeon generation algorithm in JavaScript. Part one is [here]({% post_url 2020-03-17-brogue-generation %}).
 
 ## Loops
