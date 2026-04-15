@@ -1,0 +1,35 @@
+<label for="contrast">Toggle high-contrast colors for rendered dungeons</label>
+<input type="checkbox" name="contrast" id="contrast" />
+
+<script>
+const root = document.querySelector(':root');
+let contrast = false;
+
+function toggle(contrast) {
+  if (contrast) {
+    r.style.setProperty('--rockColor', '#E69F00');
+    r.style.setProperty('--doorColor', '#DC267F')
+    r.style.setProperty('--floorColor', '#FFFFFF')
+  } else {
+    r.style.setProperty('--backgroundcolor', '#d4d4d4')
+    r.style.setProperty('--bodycolor', '#f2f2f2')
+    r.style.setProperty('--fontcolor', 'green')
+  }
+}
+
+document.querySelector('#contrast').addEventListener('click', (e) => {
+  toggle(e.target.value);
+})
+</script>
+
+<style>
+  .cell.rock {
+    background-color: var(--rockColor) !important;
+  }
+  .cell.door {
+    background-color: var(--door) !important;
+  }
+  .cell.floor {
+    background-color: var(--floor) !important;
+  }
+</style>
