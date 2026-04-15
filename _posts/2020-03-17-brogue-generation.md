@@ -6,6 +6,12 @@ excerpt: More procedural dungeon creation
 
 [Brogue](https://sites.google.com/site/broguegame/) is a procedurally generated roguelike with a great dungeon creation system. The dungeons feel organic and real, with enough complexity to create unique playthroughs.
 
+<style>
+  .cell.DOOR {
+    background-color: #DC267F !important;
+  }
+</style>
+
 <div class="image-feature">
   <img src="https://lh4.googleusercontent.com/QbiLnBbYFlLcilCvPNiZoIDpVVfTmE8UuSbvnFJbQbRnNJpFnI3w7garwSf2zqpsJkU7nL4M3I5RsZ4_EN7aeVeMMjZiVcvm32-bi7ag4E56EwyM_HWr=w1280">
 </div>
